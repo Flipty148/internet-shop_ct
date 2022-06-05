@@ -129,6 +129,7 @@ namespace internet_shop_ct.Repositories
 
         public Product GetByProductCode(int product_code)
         {
+            Product product = null;
             try
             {
                 using var connection = new MySqlConnection(ConnectString);//Соединение
@@ -143,11 +144,13 @@ namespace internet_shop_ct.Repositories
 
                 using var reader = selectCommand.ExecuteReader(); //Выполнение команды
 
-                reader.Read();
-                var productName = reader.GetString(1); //Получение назввания продукта
-                var productPrice = reader.GetInt32(2); //Получение цены продукта
+                if (reader.Read())
+                {
+                    var productName = reader.GetString(1); //Получение назввания продукта
+                    var productPrice = reader.GetInt32(2); //Получение цены продукта
 
-                Product product = new Product(product_code, productName, productPrice); //Создание продукта
+                    product = new Product(product_code, productName, productPrice); //Создание продукта
+                }
 
                 return product;
             }
