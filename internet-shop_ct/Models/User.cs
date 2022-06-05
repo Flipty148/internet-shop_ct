@@ -16,6 +16,7 @@
         {
             User_code = user_code;
             Phone_number = phone_number;
+            Name = name;
             Password = password;
             Registration_date = registration_date;
         }

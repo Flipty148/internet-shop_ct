@@ -9,6 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Domian\**" />
+    <Compile Remove="RepositoriesImplementations\**" />
+    <EmbeddedResource Remove="Domian\**" />
+    <EmbeddedResource Remove="RepositoriesImplementations\**" />
+    <None Remove="Domian\**" />
+    <None Remove="RepositoriesImplementations\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MySql.Data" Version="8.0.29" />
     <PackageReference Include="MySql.EntityFrameworkCore" Version="6.0.1" />
   </ItemGroup>
