@@ -56,26 +56,26 @@ namespace internet_shop_ct.Repositories
         {
             try
             {
-                using var connection = new MySqlConnection(ConnectString);
+                using var connection = new MySqlConnection(ConnectString); //Соединение
 
-                connection.Open();
+                connection.Open(); //Открытие соединения
 
-                var selectPromosSql = "SELECT * FROM promos WHERE @curDate >= start_date and @curDate <= end_date;";
+                var selectPromosSql = "SELECT * FROM promos WHERE @curDate >= start_date and @curDate <= end_date;"; //Sql запрос получения действующих акций
 
-                using var selectCommand = new MySqlCommand(selectPromosSql, connection);
+                using var selectCommand = new MySqlCommand(selectPromosSql, connection); //Создание команды
 
-                selectCommand.Parameters.AddWithValue("@curDate", DateTime.Today.ToString(DateFormat));
+                selectCommand.Parameters.AddWithValue("@curDate", DateTime.Today.ToString(DateFormat)); //Подстановка текущей даты в команду
 
-                using var reader = selectCommand.ExecuteReader();
+                using var reader = selectCommand.ExecuteReader(); //Выполнение команды
 
-                var promos = new List<Promo>();
+                var promos = new List<Promo>(); //Список содержащий искомые акции
 
                 while (reader.Read())
                 {
-                    int id = reader.GetInt32(0);
-                    string name = reader.GetString(1);
-                    string description = reader.GetString(2);
-                    string promo_conditions = reader.GetString(3);
+                    int id = reader.GetInt32(0); //Считывание id
+                    string name = reader.GetString(1); //Считывание названия
+                    string description = reader.GetString(2); //Считывание описания
+                    string promo_conditions = reader.GetString(3); //Считывание условий акции
                     DateOnly start_date = DateOnly.FromDateTime(reader.GetDateTime(4)); //Считать дату начала
                     DateOnly end_date = DateOnly.FromDateTime(reader.GetDateTime(5)); //Считать дату окончания
                     float promo_percent = reader.GetFloat(6); //Считать размер акции
