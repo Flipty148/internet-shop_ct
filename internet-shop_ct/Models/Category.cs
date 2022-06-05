@@ -2,9 +2,9 @@
 {
     public class Category
     {
-        public int Id_Categories { get; private set; }
+        public int Id_Categories { get; private set; } //ID категории
 
-        public string Name { get; private set; }
+        public string Name { get; private set; } //Имя категории
 
         public Category(int id_categories, string name)
         {
