@@ -2,7 +2,7 @@
 {
     public interface IPromosRepository<T>
     {
-        T GetById(T existingPromo);
+        T GetById(int id_promo);
 
         internet_shop_ct.Models.Product[] GetProductsFromPromo(T existingPromo);
 
