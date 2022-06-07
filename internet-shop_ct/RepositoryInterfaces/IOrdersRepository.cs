@@ -11,7 +11,7 @@
 
         T Update(T existingOrder); //Обновление заказа (только пункта выдачи)
 
-        T Delete(T existingOrder); //Удаление заказа
+        void Delete(T existingOrder); //Удаление заказа
 
         internet_shop_ct.Models.Product[] GetProductsByOrder(T existingOrder); //Все товары в заказе
 
