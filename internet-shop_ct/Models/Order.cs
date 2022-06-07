@@ -6,6 +6,7 @@
 
         public struct OrderPickUpPoint 
         {
+            public int id; //ID пункта выдачи
             public string name; //Название пункта выдачи
             public string address; //Адрес пункта выдачи
         };
