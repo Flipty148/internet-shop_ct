@@ -2,7 +2,12 @@
 {
     public interface IOrdersRepository<T>
     {
-        T Add(T newOrder, internet_shop_ct.Models.Product[] products, int userCode); //Добавление заказа
+        struct ProductInOrder
+        {
+            public internet_shop_ct.Models.Product Product; //Товар
+            public int Count; //Количество в заказе
+        }
+        T Add(T newOrder, ProductInOrder[] products, int userCode); //Добавление заказа
 
         T Update(T existingOrder); //Обновление заказа (только пункта выдачи)
 
