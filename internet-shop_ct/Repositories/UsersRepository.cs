@@ -1,5 +1,6 @@
 ﻿using internet_shop_ct.Models;
 using internet_shop_ct.RepositoryInterfaces;
+using internet_shop_ct.SqlDbConnect;
 using MySql.Data.MySqlClient;
 
 namespace internet_shop_ct.Repositories
@@ -7,17 +8,12 @@ namespace internet_shop_ct.Repositories
     public class UsersRepository : IUsersRepository<User>
     {
         private const string DateFormat = "yyyy-MM-dd";
-        private string ConnectString; //Строка подключения
-        public UsersRepository(string connectString = "Server=localhost;Database=internet-shop_ct;User=root;Password=root")
-        {
-            ConnectString = connectString;
-        }
 
         public User Add(User newUser)
         {
             try
             {
-                using var connection = new MySqlConnection(ConnectString); //Соединение
+                using var connection = SqlDbConnection.GetDbConnection(); //Соединение
 
                 connection.Open(); //Открытие соединения
 
@@ -49,7 +45,7 @@ namespace internet_shop_ct.Repositories
         {
             try
             {
-                using var connection = new MySqlConnection(ConnectString); //Соединение
+                using var connection = SqlDbConnection.GetDbConnection(); //Соединение
 
                 connection.Open(); //Открытие соединения
 
@@ -72,7 +68,7 @@ namespace internet_shop_ct.Repositories
             User user = null;
             try
             {
-                using var connection = new MySqlConnection(ConnectString);
+                using var connection = SqlDbConnection.GetDbConnection();
 
                 connection.Open();
 
@@ -110,7 +106,7 @@ namespace internet_shop_ct.Repositories
             User user = null;
             try
             {
-                using var connection = new MySqlConnection(ConnectString); //Соединение
+                using var connection = SqlDbConnection.GetDbConnection(); //Соединение
 
                 connection.Open(); //Открытие соединения
 
@@ -147,7 +143,7 @@ namespace internet_shop_ct.Repositories
         {
             try
             {
-                using var connection = new MySqlConnection(ConnectString); //Соединение
+                using var connection = SqlDbConnection.GetDbConnection(); //Соединение
 
                 connection.Open(); //Открытие соединения
 

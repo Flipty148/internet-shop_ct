@@ -1,5 +1,6 @@
 ﻿using internet_shop_ct.Models;
 using internet_shop_ct.RepositoryInterfaces;
+using internet_shop_ct.SqlDbConnect;
 using MySql.Data.MySqlClient;
 
 namespace internet_shop_ct.Repositories
@@ -7,18 +8,13 @@ namespace internet_shop_ct.Repositories
     public class PromosRepository : IPromosRepository<Promo>
     {
         private const string DateFormat = "yyyy-MM-dd";
-        private string ConnectString; //Строка подключения
-        public PromosRepository(string connectString = "Server=localhost;Database=internet-shop_ct;User=root;Password=root")
-        {
-            ConnectString = connectString;
-        }
 
         public Promo GetById(int id_promo)
         {
             Promo promo = null;
             try
             {                
-                using var connection = new MySqlConnection(ConnectString); //Соединение
+                using var connection = SqlDbConnection.GetDbConnection(); //Соединение
 
                 connection.Open(); //ОТкрытие соединения
 
@@ -56,7 +52,7 @@ namespace internet_shop_ct.Repositories
         {
             try
             {
-                using var connection = new MySqlConnection(ConnectString); //Соединение
+                using var connection = SqlDbConnection.GetDbConnection(); //Соединение
 
                 connection.Open(); //Открытие соединения
 
@@ -96,7 +92,7 @@ namespace internet_shop_ct.Repositories
         {
             try
             {
-                using var connection = new MySqlConnection(ConnectString); //Соединение
+                using var connection = SqlDbConnection.GetDbConnection(); //Соединение
 
                 connection.Open(); //Открытие соединения
 

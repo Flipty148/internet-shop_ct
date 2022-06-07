@@ -1,21 +1,17 @@
 ﻿using internet_shop_ct.Models;
 using internet_shop_ct.RepositoryInterfaces;
+using internet_shop_ct.SqlDbConnect;
 using MySql.Data.MySqlClient;
 
 namespace internet_shop_ct.Repositories
 {
     public class CategoriesRepository : ICategoriesRepository<Category>
     {
-        private string ConnectString; //Строка подключения
-        public CategoriesRepository(string connectString = "Server=localhost;Database=internet-shop_ct;User=root;Password=root")
-        {
-            ConnectString = connectString;
-        }
         public Category[] GetAll()
         {
             try
             {
-                using var connection = new MySqlConnection(ConnectString); //Соединение
+                using var connection = SqlDbConnection.GetDbConnection(); //Соединение
 
                 connection.Open(); //Открытие соединения
 
@@ -49,7 +45,7 @@ namespace internet_shop_ct.Repositories
             Category category = null;
             try
             {
-                using var connection = new MySqlConnection(ConnectString); //Соединение
+                using var connection = SqlDbConnection.GetDbConnection(); //Соединение
 
                 connection.Open(); //Открытие соединения
 
@@ -82,7 +78,7 @@ namespace internet_shop_ct.Repositories
         {
             try
             {
-                using var connection = new MySqlConnection(ConnectString); //Соединение
+                using var connection = SqlDbConnection.GetDbConnection(); //Соединение
 
                 connection.Open(); //Открытие соединения
 
