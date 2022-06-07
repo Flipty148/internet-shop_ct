@@ -32,5 +32,12 @@
             Payment_method = payment_method;
             Order_pick_up_point = order_pick_up_point;
         }
+
+        public Order(PaymentMethod payment_method, OrderPickUpPoint order_pick_up_point)
+        {
+            Date_and_time = DateTime.Now;
+            Payment_method = payment_method;
+            Order_pick_up_point = order_pick_up_point;
+        }
     }
 }
