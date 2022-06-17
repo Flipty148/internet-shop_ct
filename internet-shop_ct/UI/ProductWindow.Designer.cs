@@ -32,23 +32,23 @@
             this.Price = new System.Windows.Forms.Label();
             this.Tabs = new System.Windows.Forms.TabControl();
             this.CharacteristicsTab = new System.Windows.Forms.TabPage();
-            this.FeedbacksTab = new System.Windows.Forms.TabPage();
-            this.Rating = new System.Windows.Forms.Label();
-            this.Buy = new System.Windows.Forms.Button();
             this.CharacteristicsTable = new System.Windows.Forms.DataGridView();
             this.Characteristic = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CharacteristicValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.FeedbacksTab = new System.Windows.Forms.TabPage();
+            this.FeedbackTable = new System.Windows.Forms.DataGridView();
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserRating = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rating = new System.Windows.Forms.Label();
+            this.Buy = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.Tabs.SuspendLayout();
             this.CharacteristicsTab.SuspendLayout();
-            this.FeedbacksTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CharacteristicsTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.FeedbacksTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FeedbackTable)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,46 +92,10 @@
             this.CharacteristicsTab.Location = new System.Drawing.Point(4, 37);
             this.CharacteristicsTab.Name = "CharacteristicsTab";
             this.CharacteristicsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.CharacteristicsTab.Size = new System.Drawing.Size(457, 327);
+            this.CharacteristicsTab.Size = new System.Drawing.Size(638, 310);
             this.CharacteristicsTab.TabIndex = 0;
             this.CharacteristicsTab.Text = "Характеристики";
             this.CharacteristicsTab.UseVisualStyleBackColor = true;
-            // 
-            // FeedbacksTab
-            // 
-            this.FeedbacksTab.Controls.Add(this.dataGridView1);
-            this.FeedbacksTab.Location = new System.Drawing.Point(4, 37);
-            this.FeedbacksTab.Name = "FeedbacksTab";
-            this.FeedbacksTab.Padding = new System.Windows.Forms.Padding(3);
-            this.FeedbacksTab.Size = new System.Drawing.Size(638, 310);
-            this.FeedbacksTab.TabIndex = 1;
-            this.FeedbacksTab.Text = "Отзывы";
-            this.FeedbacksTab.UseVisualStyleBackColor = true;
-            // 
-            // Rating
-            // 
-            this.Rating.AutoSize = true;
-            this.Rating.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Rating.Location = new System.Drawing.Point(329, 51);
-            this.Rating.Name = "Rating";
-            this.Rating.Size = new System.Drawing.Size(320, 51);
-            this.Rating.TabIndex = 3;
-            this.Rating.Text = "5.0★";
-            // 
-            // Buy
-            // 
-            this.Buy.BackColor = System.Drawing.Color.LightGreen;
-            this.tableLayoutPanel1.SetColumnSpan(this.Buy, 2);
-            this.Buy.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Buy.FlatAppearance.BorderSize = 0;
-            this.Buy.FlatAppearance.MouseDownBackColor = System.Drawing.Color.YellowGreen;
-            this.Buy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Buy.Location = new System.Drawing.Point(3, 462);
-            this.Buy.Name = "Buy";
-            this.Buy.Size = new System.Drawing.Size(646, 45);
-            this.Buy.TabIndex = 5;
-            this.Buy.Text = "Добавить в корзину";
-            this.Buy.UseVisualStyleBackColor = false;
             // 
             // CharacteristicsTable
             // 
@@ -152,7 +116,7 @@
             this.CharacteristicsTable.RowHeadersWidth = 51;
             this.CharacteristicsTable.RowTemplate.Height = 29;
             this.CharacteristicsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.CharacteristicsTable.Size = new System.Drawing.Size(451, 321);
+            this.CharacteristicsTable.Size = new System.Drawing.Size(632, 304);
             this.CharacteristicsTable.TabIndex = 0;
             // 
             // Characteristic
@@ -173,27 +137,38 @@
             this.CharacteristicValue.ReadOnly = true;
             this.CharacteristicValue.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // dataGridView1
+            // FeedbacksTab
             // 
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.FeedbacksTab.Controls.Add(this.FeedbackTable);
+            this.FeedbacksTab.Location = new System.Drawing.Point(4, 37);
+            this.FeedbacksTab.Name = "FeedbacksTab";
+            this.FeedbacksTab.Padding = new System.Windows.Forms.Padding(3);
+            this.FeedbacksTab.Size = new System.Drawing.Size(638, 310);
+            this.FeedbacksTab.TabIndex = 1;
+            this.FeedbacksTab.Text = "Отзывы";
+            this.FeedbacksTab.UseVisualStyleBackColor = true;
+            // 
+            // FeedbackTable
+            // 
+            this.FeedbackTable.AllowUserToResizeColumns = false;
+            this.FeedbackTable.AllowUserToResizeRows = false;
+            this.FeedbackTable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.FeedbackTable.BackgroundColor = System.Drawing.Color.White;
+            this.FeedbackTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.FeedbackTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.UserName,
             this.UserRating,
             this.Comment,
             this.Date});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(632, 304);
-            this.dataGridView1.TabIndex = 0;
+            this.FeedbackTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FeedbackTable.Location = new System.Drawing.Point(3, 3);
+            this.FeedbackTable.Name = "FeedbackTable";
+            this.FeedbackTable.ReadOnly = true;
+            this.FeedbackTable.RowHeadersVisible = false;
+            this.FeedbackTable.RowHeadersWidth = 51;
+            this.FeedbackTable.RowTemplate.Height = 29;
+            this.FeedbackTable.Size = new System.Drawing.Size(632, 304);
+            this.FeedbackTable.TabIndex = 0;
             // 
             // UserName
             // 
@@ -231,6 +206,31 @@
             this.Date.ReadOnly = true;
             this.Date.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
+            // Rating
+            // 
+            this.Rating.AutoSize = true;
+            this.Rating.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Rating.Location = new System.Drawing.Point(329, 51);
+            this.Rating.Name = "Rating";
+            this.Rating.Size = new System.Drawing.Size(320, 51);
+            this.Rating.TabIndex = 3;
+            this.Rating.Text = "5.0★";
+            // 
+            // Buy
+            // 
+            this.Buy.BackColor = System.Drawing.Color.LightGreen;
+            this.tableLayoutPanel1.SetColumnSpan(this.Buy, 2);
+            this.Buy.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Buy.FlatAppearance.BorderSize = 0;
+            this.Buy.FlatAppearance.MouseDownBackColor = System.Drawing.Color.YellowGreen;
+            this.Buy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Buy.Location = new System.Drawing.Point(3, 462);
+            this.Buy.Name = "Buy";
+            this.Buy.Size = new System.Drawing.Size(646, 45);
+            this.Buy.TabIndex = 5;
+            this.Buy.Text = "Добавить в корзину";
+            this.Buy.UseVisualStyleBackColor = false;
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
@@ -266,9 +266,9 @@
             this.Load += new System.EventHandler(this.ProductWindow_Load);
             this.Tabs.ResumeLayout(false);
             this.CharacteristicsTab.ResumeLayout(false);
-            this.FeedbacksTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.CharacteristicsTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.FeedbacksTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.FeedbackTable)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -287,7 +287,7 @@
         private DataGridView CharacteristicsTable;
         private DataGridViewTextBoxColumn Characteristic;
         private DataGridViewTextBoxColumn CharacteristicValue;
-        private DataGridView dataGridView1;
+        private DataGridView FeedbackTable;
         private DataGridViewTextBoxColumn UserName;
         private DataGridViewTextBoxColumn UserRating;
         private DataGridViewTextBoxColumn Comment;
