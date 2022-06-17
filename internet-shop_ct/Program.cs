@@ -1,3 +1,4 @@
+using internet_shop_ct.internet_shop_ct.UI;
 namespace internet_shop_ct
 {
     internal static class Program
@@ -11,7 +12,7 @@ namespace internet_shop_ct
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainWindow());
+            Application.Run(new ProductWindow());
         }
     }
 }

@@ -4,7 +4,7 @@
     {
         struct ProductInOrder
         {
-            public internet_shop_ct.Models.Product Product; //Товар
+            public Models.Product Product; //Товар
             public int Count; //Количество в заказе
         }
         T Add(T newOrder, ProductInOrder[] products, int userCode); //Добавление заказа
@@ -13,9 +13,9 @@
 
         void Delete(T existingOrder); //Удаление заказа
 
-        internet_shop_ct.Models.Product[] GetProductsByOrder(T existingOrder); //Все товары в заказе
+        Models.Product[] GetProductsByOrder(T existingOrder); //Все товары в заказе
 
-        internet_shop_ct.Models.User GetUserByOrder(T existingOrder); //Пользователь по заказу
+        Models.User GetUserByOrder(T existingOrder); //Пользователь по заказу
 
         T[] GetOrdersByUser(int user_code); //Получить все заказы пользователя
 

@@ -4,6 +4,6 @@
     {
         string[] GetValuesById(int id); //Получить все значения характеристики по её ID
 
-        T[] GetAllByProduct(internet_shop_ct.Models.Product existingProduct); //Получить все характеристики товара
+        T[] GetAllByProduct(Models.Product existingProduct); //Получить все характеристики товара
     }
 }
