@@ -45,7 +45,7 @@
             this.PickupPointLabel = new System.Windows.Forms.Label();
             this.PickUpPointBox = new System.Windows.Forms.ComboBox();
             this.PaymentMethodLabel = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.PaymentMethodBox = new System.Windows.Forms.ComboBox();
             this.OrderButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.ProductsTable)).BeginInit();
@@ -196,7 +196,7 @@
             // 
             this.PickUpPointBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.PickUpPointBox.FormattingEnabled = true;
-            this.PickUpPointBox.Location = new System.Drawing.Point(329, 401);
+            this.PickUpPointBox.Location = new System.Drawing.Point(329, 393);
             this.PickUpPointBox.Name = "PickUpPointBox";
             this.PickUpPointBox.Size = new System.Drawing.Size(320, 36);
             this.PickUpPointBox.TabIndex = 3;
@@ -212,14 +212,14 @@
             this.PaymentMethodLabel.Text = "Способ оплаты";
             this.PaymentMethodLabel.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
-            // comboBox1
+            // PaymentMethodBox
             // 
-            this.comboBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(329, 447);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(320, 36);
-            this.comboBox1.TabIndex = 5;
+            this.PaymentMethodBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.PaymentMethodBox.FormattingEnabled = true;
+            this.PaymentMethodBox.Location = new System.Drawing.Point(329, 455);
+            this.PaymentMethodBox.Name = "PaymentMethodBox";
+            this.PaymentMethodBox.Size = new System.Drawing.Size(320, 36);
+            this.PaymentMethodBox.TabIndex = 5;
             // 
             // OrderButton
             // 
@@ -244,7 +244,7 @@
             this.tableLayoutPanel1.Controls.Add(this.ProductsTable, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.OrderButton, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.TotalPrice, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox1, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.PaymentMethodBox, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.PickupPointLabel, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.PaymentMethodLabel, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.PickUpPointBox, 1, 2);
@@ -294,7 +294,7 @@
         private Label PickupPointLabel;
         private ComboBox PickUpPointBox;
         private Label PaymentMethodLabel;
-        private ComboBox comboBox1;
+        private ComboBox PaymentMethodBox;
         private Button OrderButton;
         private TableLayoutPanel tableLayoutPanel1;
     }
