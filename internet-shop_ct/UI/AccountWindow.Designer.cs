@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PersonalCabinetLabel = new System.Windows.Forms.Label();
             this.UserName = new System.Windows.Forms.Label();
             this.Tabs = new System.Windows.Forms.TabControl();
@@ -48,6 +49,7 @@
             this.PasswordConfirmLabel = new System.Windows.Forms.Label();
             this.PasswordConfirmText = new System.Windows.Forms.TextBox();
             this.SaveChangeButton = new System.Windows.Forms.Button();
+            this.DeleteAccountButton = new System.Windows.Forms.Button();
             this.OrdersTab = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -57,6 +59,7 @@
             this.PaymentMethod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Change = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.RemoveOrder = new System.Windows.Forms.DataGridViewButtonColumn();
             this.SaveChangeOrder = new System.Windows.Forms.Button();
             this.FeedbacksTab = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -128,7 +131,7 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33332F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel1.Controls.Add(this.RegisterDateLabel, 0, 0);
@@ -145,17 +148,20 @@
             this.tableLayoutPanel1.Controls.Add(this.PasswordConfirmLabel, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.PasswordConfirmText, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.SaveChangeButton, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.DeleteAccountButton, 0, 7);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 7;
+            this.tableLayoutPanel1.RowCount = 9;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(940, 546);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -291,6 +297,7 @@
             // SaveChangeButton
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.SaveChangeButton, 3);
+            this.SaveChangeButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SaveChangeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveChangeButton.Location = new System.Drawing.Point(3, 273);
             this.SaveChangeButton.Name = "SaveChangeButton";
@@ -298,6 +305,19 @@
             this.SaveChangeButton.TabIndex = 13;
             this.SaveChangeButton.Text = "Сохранить изменения";
             this.SaveChangeButton.UseVisualStyleBackColor = true;
+            // 
+            // DeleteAccountButton
+            // 
+            this.DeleteAccountButton.BackColor = System.Drawing.Color.OrangeRed;
+            this.tableLayoutPanel1.SetColumnSpan(this.DeleteAccountButton, 3);
+            this.DeleteAccountButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DeleteAccountButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteAccountButton.Location = new System.Drawing.Point(3, 381);
+            this.DeleteAccountButton.Name = "DeleteAccountButton";
+            this.DeleteAccountButton.Size = new System.Drawing.Size(934, 48);
+            this.DeleteAccountButton.TabIndex = 14;
+            this.DeleteAccountButton.Text = "Удалить учётную запись";
+            this.DeleteAccountButton.UseVisualStyleBackColor = false;
             // 
             // OrdersTab
             // 
@@ -339,7 +359,8 @@
             this.PickUpPoint,
             this.PaymentMethod,
             this.Sum,
-            this.Change});
+            this.Change,
+            this.RemoveOrder});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
@@ -406,6 +427,22 @@
             this.Change.Name = "Change";
             this.Change.ReadOnly = true;
             this.Change.Width = 125;
+            // 
+            // RemoveOrder
+            // 
+            this.RemoveOrder.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle2.NullValue = "Отменить";
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.RemoveOrder.DefaultCellStyle = dataGridViewCellStyle2;
+            this.RemoveOrder.HeaderText = "Отменить заказ";
+            this.RemoveOrder.MinimumWidth = 6;
+            this.RemoveOrder.Name = "RemoveOrder";
+            this.RemoveOrder.ReadOnly = true;
+            this.RemoveOrder.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.RemoveOrder.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // SaveChangeOrder
             // 
@@ -599,12 +636,6 @@
         private Button SaveChangeButton;
         private TableLayoutPanel tableLayoutPanel2;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn OrderNumber;
-        private DataGridViewTextBoxColumn OrderDate;
-        private DataGridViewComboBoxColumn PickUpPoint;
-        private DataGridViewTextBoxColumn PaymentMethod;
-        private DataGridViewTextBoxColumn Sum;
-        private DataGridViewButtonColumn Change;
         private Button SaveChangeOrder;
         private DataGridView dataGridView2;
         private DataGridViewTextBoxColumn FeedbackDate;
@@ -613,5 +644,13 @@
         private DataGridViewTextBoxColumn Comment;
         private TableLayoutPanel tableLayoutPanel3;
         private LinkLabel MainPage;
+        private Button DeleteAccountButton;
+        private DataGridViewTextBoxColumn OrderNumber;
+        private DataGridViewTextBoxColumn OrderDate;
+        private DataGridViewComboBoxColumn PickUpPoint;
+        private DataGridViewTextBoxColumn PaymentMethod;
+        private DataGridViewTextBoxColumn Sum;
+        private DataGridViewButtonColumn Change;
+        private DataGridViewButtonColumn RemoveOrder;
     }
 }
