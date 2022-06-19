@@ -28,13 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ProductName = new System.Windows.Forms.Label();
             this.Price = new System.Windows.Forms.Label();
             this.Tabs = new System.Windows.Forms.TabControl();
             this.CharacteristicsTab = new System.Windows.Forms.TabPage();
             this.CharacteristicsTable = new System.Windows.Forms.DataGridView();
-            this.Characteristic = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CharacteristicValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FeedbacksTab = new System.Windows.Forms.TabPage();
             this.FeedbackTable = new System.Windows.Forms.DataGridView();
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,6 +47,9 @@
             this.Rating = new System.Windows.Forms.Label();
             this.Buy = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.Characteristic = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CharacteristicValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tabs.SuspendLayout();
             this.CharacteristicsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CharacteristicsTable)).BeginInit();
@@ -99,14 +105,25 @@
             // 
             // CharacteristicsTable
             // 
+            this.CharacteristicsTable.AllowUserToAddRows = false;
             this.CharacteristicsTable.AllowUserToDeleteRows = false;
             this.CharacteristicsTable.AllowUserToResizeColumns = false;
             this.CharacteristicsTable.AllowUserToResizeRows = false;
+            this.CharacteristicsTable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.CharacteristicsTable.BackgroundColor = System.Drawing.Color.White;
             this.CharacteristicsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CharacteristicsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Characteristic,
+            this.Description,
             this.CharacteristicValue});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.CharacteristicsTable.DefaultCellStyle = dataGridViewCellStyle3;
             this.CharacteristicsTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CharacteristicsTable.Location = new System.Drawing.Point(3, 3);
             this.CharacteristicsTable.MultiSelect = false;
@@ -118,24 +135,6 @@
             this.CharacteristicsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.CharacteristicsTable.Size = new System.Drawing.Size(632, 304);
             this.CharacteristicsTable.TabIndex = 0;
-            // 
-            // Characteristic
-            // 
-            this.Characteristic.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Characteristic.HeaderText = "Характеристика";
-            this.Characteristic.MinimumWidth = 6;
-            this.Characteristic.Name = "Characteristic";
-            this.Characteristic.ReadOnly = true;
-            this.Characteristic.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // CharacteristicValue
-            // 
-            this.CharacteristicValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CharacteristicValue.HeaderText = "Значение";
-            this.CharacteristicValue.MinimumWidth = 6;
-            this.CharacteristicValue.Name = "CharacteristicValue";
-            this.CharacteristicValue.ReadOnly = true;
-            this.CharacteristicValue.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // FeedbacksTab
             // 
@@ -150,9 +149,11 @@
             // 
             // FeedbackTable
             // 
+            this.FeedbackTable.AllowUserToAddRows = false;
+            this.FeedbackTable.AllowUserToDeleteRows = false;
             this.FeedbackTable.AllowUserToResizeColumns = false;
             this.FeedbackTable.AllowUserToResizeRows = false;
-            this.FeedbackTable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.FeedbackTable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.FeedbackTable.BackgroundColor = System.Drawing.Color.White;
             this.FeedbackTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.FeedbackTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -160,8 +161,17 @@
             this.UserRating,
             this.Comment,
             this.Date});
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.FeedbackTable.DefaultCellStyle = dataGridViewCellStyle5;
             this.FeedbackTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FeedbackTable.Location = new System.Drawing.Point(3, 3);
+            this.FeedbackTable.MultiSelect = false;
             this.FeedbackTable.Name = "FeedbackTable";
             this.FeedbackTable.ReadOnly = true;
             this.FeedbackTable.RowHeadersVisible = false;
@@ -191,6 +201,8 @@
             // Comment
             // 
             this.Comment.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Comment.DefaultCellStyle = dataGridViewCellStyle4;
             this.Comment.HeaderText = "Комментарий";
             this.Comment.MinimumWidth = 6;
             this.Comment.Name = "Comment";
@@ -252,6 +264,36 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(652, 510);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
+            // Characteristic
+            // 
+            this.Characteristic.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Characteristic.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Characteristic.HeaderText = "Характеристика";
+            this.Characteristic.MinimumWidth = 6;
+            this.Characteristic.Name = "Characteristic";
+            this.Characteristic.ReadOnly = true;
+            this.Characteristic.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Description
+            // 
+            this.Description.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Description.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Description.HeaderText = "Описание";
+            this.Description.MinimumWidth = 6;
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            // 
+            // CharacteristicValue
+            // 
+            this.CharacteristicValue.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CharacteristicValue.HeaderText = "Значение";
+            this.CharacteristicValue.MinimumWidth = 6;
+            this.CharacteristicValue.Name = "CharacteristicValue";
+            this.CharacteristicValue.ReadOnly = true;
+            this.CharacteristicValue.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
             // ProductWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 28F);
@@ -285,13 +327,14 @@
         private Label Rating;
         private Button Buy;
         private DataGridView CharacteristicsTable;
-        private DataGridViewTextBoxColumn Characteristic;
-        private DataGridViewTextBoxColumn CharacteristicValue;
         private DataGridView FeedbackTable;
+        private TableLayoutPanel tableLayoutPanel1;
         private DataGridViewTextBoxColumn UserName;
         private DataGridViewTextBoxColumn UserRating;
         private DataGridViewTextBoxColumn Comment;
         private DataGridViewTextBoxColumn Date;
-        private TableLayoutPanel tableLayoutPanel1;
+        private DataGridViewTextBoxColumn Characteristic;
+        private DataGridViewTextBoxColumn Description;
+        private DataGridViewTextBoxColumn CharacteristicValue;
     }
 }

@@ -19,13 +19,14 @@ namespace internet_shop_ct.internet_shop_ct.UI
         {
             this.ProductName.Text = CurProduct.Name; //Установить имя текущего товара
             this.Price.Text = CurProduct.Price.ToString() + "р."; //Установить цену текущего товара
-            SetFeedbacks();
+            SetFeedbacksTable(); //Установить отзывы
+            SetCharacteristicsTable(); //Установить характеристики
         }
 
-        private void SetFeedbacks()
+        private void SetFeedbacksTable()
         {
-            FeedbacksRepository feedbacksRepository = new FeedbacksRepository(); //Репозиторий отзывов
-            UsersRepository usersRepository = new UsersRepository(); //Репозиторий пользователей
+            IFeedbacksRepository<Feedback> feedbacksRepository = new FeedbacksRepository(); //Репозиторий отзывов
+            IUsersRepository<User> usersRepository = new UsersRepository(); //Репозиторий пользователей
             float avgRating = feedbacksRepository.AvgRating(CurProduct.Product_code); //Получит среднюю оценку
             this.Rating.Text = avgRating.ToString() + "★"; //Установить среднюю оценку
 
@@ -34,7 +35,18 @@ namespace internet_shop_ct.internet_shop_ct.UI
             foreach (Feedback feedback in feedbacks)
             { //Для каждого отзыва
                 User user = usersRepository.GetByUserCode(feedback.User_code); //Получить пользователя, оставившего отзыв
-                this.FeedbackTable.Rows.Add(user.Name, feedback.Rating, feedback.Comment, feedback.Date_and_time.Date); //Установить отзыв в таблицу
+                this.FeedbackTable.Rows.Add(user.Name, feedback.Rating, feedback.Comment, DateOnly.FromDateTime(feedback.Date_and_time)); //Установить отзыв в таблицу
+            }
+        }
+
+        private void SetCharacteristicsTable()
+        {
+            ICharacteristicsRepository<Characteristic> characteristicsRepository = new CharacteristicsRepository(); //Репозиторий характеристик
+            Characteristic[] characteristics = characteristicsRepository.GetAllByProduct(CurProduct); //Все характеристики продукта
+
+            foreach (Characteristic characteristic in characteristics)
+            {// Для каждой характеристики
+                this.CharacteristicsTable.Rows.Add(characteristic.Name, characteristic.Description, characteristic.Value); //Добавить в таблицу
             }
         }
     }
