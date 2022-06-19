@@ -55,6 +55,7 @@
             this.ProductPriceCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PromosTab = new System.Windows.Forms.TabPage();
             this.PromoTable = new System.Windows.Forms.DataGridView();
+            this.IdPromo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PromoName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PromoStartDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PromoEndDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -366,6 +367,8 @@
             // 
             // PromoTable
             // 
+            this.PromoTable.AllowUserToAddRows = false;
+            this.PromoTable.AllowUserToDeleteRows = false;
             this.PromoTable.AllowUserToResizeColumns = false;
             this.PromoTable.AllowUserToResizeRows = false;
             this.PromoTable.BackgroundColor = System.Drawing.Color.White;
@@ -379,6 +382,7 @@
             this.PromoTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.PromoTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PromoTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdPromo,
             this.PromoName,
             this.PromoStartDate,
             this.PromoEndDate,
@@ -403,6 +407,16 @@
             this.PromoTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.PromoTable.Size = new System.Drawing.Size(1228, 618);
             this.PromoTable.TabIndex = 0;
+            // 
+            // IdPromo
+            // 
+            this.IdPromo.HeaderText = "ID акции";
+            this.IdPromo.MinimumWidth = 6;
+            this.IdPromo.Name = "IdPromo";
+            this.IdPromo.ReadOnly = true;
+            this.IdPromo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.IdPromo.Visible = false;
+            this.IdPromo.Width = 125;
             // 
             // PromoName
             // 
@@ -514,10 +528,6 @@
         private DataGridView CategoriesProducts;
         private TabPage PromosTab;
         private DataGridView PromoTable;
-        private DataGridViewTextBoxColumn PromoName;
-        private DataGridViewTextBoxColumn PromoStartDate;
-        private DataGridViewTextBoxColumn PromoEndDate;
-        private DataGridViewTextBoxColumn PromoPercent;
         private DataGridViewTextBoxColumn ProductCode;
         private DataGridViewTextBoxColumn ProductName;
         private DataGridViewTextBoxColumn ProductPrice;
@@ -525,5 +535,10 @@
         private DataGridViewTextBoxColumn ProductCodeCategory;
         private DataGridViewTextBoxColumn ProductNameCategory;
         private DataGridViewTextBoxColumn ProductPriceCategory;
+        private DataGridViewTextBoxColumn IdPromo;
+        private DataGridViewTextBoxColumn PromoName;
+        private DataGridViewTextBoxColumn PromoStartDate;
+        private DataGridViewTextBoxColumn PromoEndDate;
+        private DataGridViewTextBoxColumn PromoPercent;
     }
 }

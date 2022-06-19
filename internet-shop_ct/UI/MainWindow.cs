@@ -19,6 +19,7 @@ namespace internet_shop_ct
         {
             setProductsTable(); //Установить таблицу товаров
             setCategoriesTable(); //Установить таблицу категорий
+            setPromosTable(); //Установить таблицу акций
         }
 
         private void setProductsTable()
@@ -79,6 +80,18 @@ namespace internet_shop_ct
             int id = Convert.ToInt32(CategoriesProducts[0, rowIndex].Value);
             using ProductWindow productWindow = new ProductWindow(id);
             productWindow.ShowDialog(); //Отобразить окно товара
+        }
+
+        private void setPromosTable()
+        {
+            IPromosRepository<Promo> promosRepository = new PromosRepository();
+
+            Promo[] promos = promosRepository.GetCurrentPromos();
+
+            foreach (Promo promo in promos)
+            {
+                this.PromoTable.Rows.Add(promo.Id_promos, promo.Name, promo.Start_date, promo.End_date, promo.Promo_percent*100 + "%");
+            }
         }
     }
 }
