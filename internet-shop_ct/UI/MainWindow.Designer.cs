@@ -89,6 +89,7 @@
             this.Login.TabIndex = 1;
             this.Login.Text = "Войти";
             this.Login.UseVisualStyleBackColor = false;
+            this.Login.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Login_MouseDown);
             // 
             // Tabs
             // 

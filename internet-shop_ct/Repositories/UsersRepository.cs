@@ -63,7 +63,7 @@ namespace internet_shop_ct.Repositories
             }
         }
 
-        public User GetByLogin(int phone_number, string password)
+        public User GetByLogin(decimal phone_number, string password)
         {
             User user = null;
             try

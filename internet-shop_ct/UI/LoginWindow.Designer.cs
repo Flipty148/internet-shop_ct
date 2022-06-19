@@ -58,6 +58,9 @@
             this.PhoneNumberText.Name = "PhoneNumberText";
             this.PhoneNumberText.Size = new System.Drawing.Size(311, 36);
             this.PhoneNumberText.TabIndex = 1;
+            this.PhoneNumberText.Text = "+7";
+            this.PhoneNumberText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PhoneNumberText_KeyDown);
+            this.PhoneNumberText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PhoneNumberText_KeyPress);
             // 
             // PasswordLabel
             // 
@@ -103,11 +106,13 @@
             this.LoginButton.TabIndex = 5;
             this.LoginButton.Text = "Войти";
             this.LoginButton.UseVisualStyleBackColor = false;
+            this.LoginButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.LoginButton_MouseClick);
             // 
             // ErrorLabel
             // 
             this.ErrorLabel.AutoSize = true;
             this.ErrorLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ErrorLabel.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ErrorLabel.ForeColor = System.Drawing.Color.OrangeRed;
             this.ErrorLabel.Location = new System.Drawing.Point(3, 245);
             this.ErrorLabel.Name = "ErrorLabel";
@@ -130,6 +135,7 @@
             this.Register.TabStop = true;
             this.Register.Text = "Зарегистрироваться?";
             this.Register.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Register.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Register_LinkClicked);
             // 
             // tableLayoutPanel1
             // 

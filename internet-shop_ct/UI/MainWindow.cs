@@ -8,7 +8,12 @@ namespace internet_shop_ct
 {
     public partial class MainWindow : Form
     {
-        
+        private User CurUser = null;
+
+        public void setUser(User user)
+        {
+            CurUser = user;
+        }
         public MainWindow()
         {
             InitializeComponent();
@@ -101,6 +106,17 @@ namespace internet_shop_ct
             int id = Convert.ToInt32(PromoTable[0, rowIndex].Value);
             using PromoWindow productWindow = new PromoWindow(id);
             productWindow.ShowDialog(); //Отобразить окно акции
+        }
+
+        private void Login_MouseDown(object sender, MouseEventArgs e)
+        {
+            using LoginWindow loginWindow = new LoginWindow(this);
+            loginWindow.ShowDialog();
+            
+            if (CurUser != null)
+            {
+                this.Login.Text = CurUser.Name;
+            }
         }
     }
 }
