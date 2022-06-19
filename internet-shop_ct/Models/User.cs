@@ -4,7 +4,7 @@
     {
         public int User_code { get; private set; } //Код пользователя
 
-        public int Phone_number { get; private set; } //Номер телефона
+        public decimal Phone_number { get; private set; } //Номер телефона
 
         public string Name { get; private set; } //Имя
 
@@ -12,7 +12,7 @@
 
         public DateOnly Registration_date { get; private set; } //Дата регистрации
 
-        public User(int user_code, int phone_number, string name, string password, DateOnly registration_date)
+        public User(int user_code, decimal phone_number, string name, string password, DateOnly registration_date)
         {
             User_code = user_code;
             Phone_number = phone_number;
@@ -21,7 +21,7 @@
             Registration_date = registration_date;
         }
 
-        public User(int phone_number, string name, string password)
+        public User(decimal phone_number, string name, string password)
         {
             Phone_number = phone_number;
             Name = name;

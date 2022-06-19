@@ -84,7 +84,7 @@ namespace internet_shop_ct.Repositories
                 if (reader.Read())
                 {
                     int user_code = reader.GetInt32(0);
-                    int phone = reader.GetInt32(1);
+                    decimal phone = reader.GetDecimal(1);
                     string name = reader.GetString(2);
                     string pass = reader.GetString(3);
                     DateOnly date = DateOnly.FromDateTime(reader.GetDateTime(4));
@@ -122,7 +122,7 @@ namespace internet_shop_ct.Repositories
                 if (reader.Read())
                 {
                     int id = reader.GetInt32(0); //Получение кода пользователя
-                    int phone_number = reader.GetInt32(1); //получения номера телефона
+                    decimal phone_number = reader.GetDecimal(1); //получения номера телефона
                     string name = reader.GetString(2); //Получение имени
                     string password = reader.GetString(3); //Получение пароля
                     DateOnly registration_date = DateOnly.FromDateTime(reader.GetDateTime(4)); //Получение даты регистрации
