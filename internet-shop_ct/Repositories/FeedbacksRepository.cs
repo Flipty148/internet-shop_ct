@@ -26,9 +26,9 @@ namespace internet_shop_ct.Repositories
                 var reader = command.ExecuteReader(); //Выполнение команды
 
                 float avg = 0; //Средняя оценка
-                if (reader.Read())
+                if (reader.Read() && !reader.IsDBNull(0))
                 {
-                    avg = reader.GetInt32(0); //Считать среднюю оценку
+                    avg = reader.GetFloat(0); //Считать среднюю оценку
                 }
 
                 return avg;
