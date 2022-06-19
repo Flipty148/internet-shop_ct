@@ -60,7 +60,9 @@ namespace internet_shop_ct.Repositories
                 if (reader.Read())
                 {
                     int id_feedback = reader.GetInt32(0); //Считать Id
-                    string comment = reader.GetString(1); //Считать комментарий
+                    string comment = null;
+                    if (reader.IsDBNull(1) && reader.GetString(1) != "")
+                        comment = reader.GetString(1); //Считать комментарий, если он не пустой
                     DateTime date_and_time = reader.GetDateTime(2); //Считать дату и время
                     int rating = reader.GetInt32(3); //Считать оценку
                     int user_code = reader.GetInt32(4); //Считать код пользователя
@@ -97,7 +99,9 @@ namespace internet_shop_ct.Repositories
                 while (reader.Read())
                 {
                     int id_feedback = reader.GetInt32(0); //Считать ID отзыва
-                    string comment = reader.GetString(1); //Считать комментарий
+                    string comment = null;
+                    if (!reader.IsDBNull(1) && reader.GetString(1) != "")
+                        comment = reader.GetString(1); //Считать комментарий, если он не пустой
                     DateTime date_and_time = reader.GetDateTime(2); //Считать дату и время
                     int rating = reader.GetInt32(3); //Считать оценку
                     int user_code = reader.GetInt32(4); //Считать код пользователя
@@ -133,7 +137,9 @@ namespace internet_shop_ct.Repositories
                 while (reader.Read())
                 {
                     int id_feedback = reader.GetInt32(0); //Считать ID отзыва
-                    string comment = reader.GetString(1); //Считать комментарий
+                    string comment = null;
+                    if (reader.IsDBNull(1) && reader.GetString(1) != "")
+                        comment = reader.GetString(1); //Считать комментарий, если он не пустой
                     DateTime date_and_time = reader.GetDateTime(2); //Считать дату и время
                     int rating = reader.GetInt32(3); //Считать оценку
                     int product_code = reader.GetInt32(5); //Считать код товара
