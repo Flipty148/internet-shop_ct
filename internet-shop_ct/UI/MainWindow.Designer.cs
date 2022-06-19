@@ -30,22 +30,27 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Login = new System.Windows.Forms.Button();
             this.Tabs = new System.Windows.Forms.TabControl();
             this.ProductsTab = new System.Windows.Forms.TabPage();
             this.ProductsTable = new System.Windows.Forms.DataGridView();
+            this.ProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductBuy = new System.Windows.Forms.DataGridViewButtonColumn();
             this.CategoriesTab = new System.Windows.Forms.TabPage();
             this.CategoriesLayout = new System.Windows.Forms.TableLayoutPanel();
             this.CategoriesTable = new System.Windows.Forms.DataGridView();
             this.CategoriesName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CategoriesProducts = new System.Windows.Forms.DataGridView();
+            this.ProductCodeCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductNameCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductPriceCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PromosTab = new System.Windows.Forms.TabPage();
@@ -56,10 +61,6 @@
             this.PromoPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Basket = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.ProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductBuy = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Tabs.SuspendLayout();
             this.ProductsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProductsTable)).BeginInit();
@@ -157,6 +158,57 @@
             this.ProductsTable.TabIndex = 0;
             this.ProductsTable.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ProductsTable_CellMouseDoubleClick);
             // 
+            // ProductCode
+            // 
+            this.ProductCode.Frozen = true;
+            this.ProductCode.HeaderText = "Код товара";
+            this.ProductCode.MinimumWidth = 6;
+            this.ProductCode.Name = "ProductCode";
+            this.ProductCode.ReadOnly = true;
+            this.ProductCode.Visible = false;
+            this.ProductCode.Width = 125;
+            // 
+            // ProductName
+            // 
+            this.ProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ProductName.FillWeight = 500F;
+            this.ProductName.HeaderText = "Наименование";
+            this.ProductName.MinimumWidth = 6;
+            this.ProductName.Name = "ProductName";
+            this.ProductName.ReadOnly = true;
+            this.ProductName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // ProductPrice
+            // 
+            this.ProductPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ProductPrice.FillWeight = 500F;
+            this.ProductPrice.HeaderText = "Цена";
+            this.ProductPrice.MinimumWidth = 6;
+            this.ProductPrice.Name = "ProductPrice";
+            this.ProductPrice.ReadOnly = true;
+            this.ProductPrice.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // ProductBuy
+            // 
+            this.ProductBuy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Green;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.NullValue = "Купить";
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.GreenYellow;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.ProductBuy.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ProductBuy.FillWeight = 300F;
+            this.ProductBuy.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ProductBuy.HeaderText = "Добавить в корзину";
+            this.ProductBuy.MinimumWidth = 6;
+            this.ProductBuy.Name = "ProductBuy";
+            this.ProductBuy.ReadOnly = true;
+            this.ProductBuy.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ProductBuy.Text = "Купить";
+            this.ProductBuy.UseColumnTextForButtonValue = true;
+            // 
             // CategoriesTab
             // 
             this.CategoriesTab.Controls.Add(this.CategoriesLayout);
@@ -185,6 +237,7 @@
             // 
             // CategoriesTable
             // 
+            this.CategoriesTable.AllowUserToAddRows = false;
             this.CategoriesTable.AllowUserToDeleteRows = false;
             this.CategoriesTable.AllowUserToResizeColumns = false;
             this.CategoriesTable.AllowUserToResizeRows = false;
@@ -204,7 +257,7 @@
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.InactiveCaption;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.CategoriesTable.DefaultCellStyle = dataGridViewCellStyle5;
@@ -220,6 +273,7 @@
             this.CategoriesTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.CategoriesTable.Size = new System.Drawing.Size(608, 612);
             this.CategoriesTable.TabIndex = 0;
+            this.CategoriesTable.CurrentCellChanged += new System.EventHandler(this.CategoriesTable_CurrentCellChanged);
             // 
             // CategoriesName
             // 
@@ -231,6 +285,8 @@
             // 
             // CategoriesProducts
             // 
+            this.CategoriesProducts.AllowUserToAddRows = false;
+            this.CategoriesProducts.AllowUserToDeleteRows = false;
             this.CategoriesProducts.AllowUserToResizeColumns = false;
             this.CategoriesProducts.AllowUserToResizeRows = false;
             this.CategoriesProducts.BackgroundColor = System.Drawing.Color.White;
@@ -244,6 +300,7 @@
             this.CategoriesProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.CategoriesProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.CategoriesProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ProductCodeCategory,
             this.ProductNameCategory,
             this.ProductPriceCategory});
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -266,6 +323,17 @@
             this.CategoriesProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.CategoriesProducts.Size = new System.Drawing.Size(608, 612);
             this.CategoriesProducts.TabIndex = 1;
+            this.CategoriesProducts.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.CategoriesProducts_CellMouseDoubleClick);
+            // 
+            // ProductCodeCategory
+            // 
+            this.ProductCodeCategory.HeaderText = "Код товара";
+            this.ProductCodeCategory.MinimumWidth = 6;
+            this.ProductCodeCategory.Name = "ProductCodeCategory";
+            this.ProductCodeCategory.ReadOnly = true;
+            this.ProductCodeCategory.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ProductCodeCategory.Visible = false;
+            this.ProductCodeCategory.Width = 125;
             // 
             // ProductNameCategory
             // 
@@ -407,57 +475,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1248, 696);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
-            // ProductCode
-            // 
-            this.ProductCode.Frozen = true;
-            this.ProductCode.HeaderText = "Код товара";
-            this.ProductCode.MinimumWidth = 6;
-            this.ProductCode.Name = "ProductCode";
-            this.ProductCode.ReadOnly = true;
-            this.ProductCode.Visible = false;
-            this.ProductCode.Width = 125;
-            // 
-            // ProductName
-            // 
-            this.ProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ProductName.FillWeight = 500F;
-            this.ProductName.HeaderText = "Наименование";
-            this.ProductName.MinimumWidth = 6;
-            this.ProductName.Name = "ProductName";
-            this.ProductName.ReadOnly = true;
-            this.ProductName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // ProductPrice
-            // 
-            this.ProductPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ProductPrice.FillWeight = 500F;
-            this.ProductPrice.HeaderText = "Цена";
-            this.ProductPrice.MinimumWidth = 6;
-            this.ProductPrice.Name = "ProductPrice";
-            this.ProductPrice.ReadOnly = true;
-            this.ProductPrice.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // ProductBuy
-            // 
-            this.ProductBuy.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Green;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.NullValue = "Купить";
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.GreenYellow;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.ProductBuy.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ProductBuy.FillWeight = 300F;
-            this.ProductBuy.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ProductBuy.HeaderText = "Добавить в корзину";
-            this.ProductBuy.MinimumWidth = 6;
-            this.ProductBuy.Name = "ProductBuy";
-            this.ProductBuy.ReadOnly = true;
-            this.ProductBuy.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ProductBuy.Text = "Купить";
-            this.ProductBuy.UseColumnTextForButtonValue = true;
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -495,8 +512,6 @@
         private DataGridView CategoriesTable;
         private DataGridViewTextBoxColumn CategoriesName;
         private DataGridView CategoriesProducts;
-        private DataGridViewTextBoxColumn ProductNameCategory;
-        private DataGridViewTextBoxColumn ProductPriceCategory;
         private TabPage PromosTab;
         private DataGridView PromoTable;
         private DataGridViewTextBoxColumn PromoName;
@@ -507,5 +522,8 @@
         private DataGridViewTextBoxColumn ProductName;
         private DataGridViewTextBoxColumn ProductPrice;
         private DataGridViewButtonColumn ProductBuy;
+        private DataGridViewTextBoxColumn ProductCodeCategory;
+        private DataGridViewTextBoxColumn ProductNameCategory;
+        private DataGridViewTextBoxColumn ProductPriceCategory;
     }
 }
