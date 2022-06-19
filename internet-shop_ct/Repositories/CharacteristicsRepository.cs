@@ -33,7 +33,9 @@ namespace internet_shop_ct.Repositories
                 {
                     int id = reader.GetInt32(0); //Считать ID характеристики
                     string name = reader.GetString(1); //Считать название характеристики
-                    string description = reader.GetString(2); //Считать описание
+                    string description = null;
+                    if (!reader.IsDBNull(2) && reader.GetString(2) != "")
+                        description = reader.GetString(2); //Считать описание, если оно не пустое
                     string value = reader.GetString(3); //Считать значение характеристики
 
                     characteristics.Add(new Characteristic(id, name, description, value)); //Добавить характеристику
