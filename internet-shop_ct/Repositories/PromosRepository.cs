@@ -100,7 +100,7 @@ namespace internet_shop_ct.Repositories
 
                 connection.Open(); //Открытие соединения
 
-                var selectProductsSql = @"SELECT products.product_code, products.name, products.price FROM promos
+                var selectProductsSql = @"SELECT products.product_code, products.name, round(products.price*(1-promos.promo_percent),0) FROM promos
                                       JOIN products_to_promos AS ptp ON promos.id_promos = ptp.id_promo
                                       JOIN products ON products.product_code = ptp.product_code
                                       WHERE promos.id_promos = @id_promo;"; //Sql запрос получения всех продуктов, участвующих в акцции
