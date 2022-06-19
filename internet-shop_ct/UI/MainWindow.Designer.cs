@@ -407,6 +407,7 @@
             this.PromoTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.PromoTable.Size = new System.Drawing.Size(1228, 618);
             this.PromoTable.TabIndex = 0;
+            this.PromoTable.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.PromoTable_CellMouseDoubleClick);
             // 
             // IdPromo
             // 

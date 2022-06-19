@@ -2,6 +2,7 @@ using internet_shop_ct.RepositoryInterfaces;
 using internet_shop_ct.Models;
 using internet_shop_ct.Repositories;
 using internet_shop_ct.internet_shop_ct.UI;
+using internet_shop_ct.UI;
 
 namespace internet_shop_ct
 {
@@ -92,6 +93,14 @@ namespace internet_shop_ct
             {
                 this.PromoTable.Rows.Add(promo.Id_promos, promo.Name, promo.Start_date, promo.End_date, promo.Promo_percent*100 + "%");
             }
+        }
+
+        private void PromoTable_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            int rowIndex = e.RowIndex; //Выбранная акция
+            int id = Convert.ToInt32(PromoTable[0, rowIndex].Value);
+            using PromoWindow productWindow = new PromoWindow(id);
+            productWindow.ShowDialog(); //Отобразить окно акции
         }
     }
 }
