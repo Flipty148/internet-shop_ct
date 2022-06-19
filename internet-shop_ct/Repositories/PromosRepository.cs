@@ -30,7 +30,9 @@ namespace internet_shop_ct.Repositories
                 {
                     int id_promos = reader.GetInt32(0); //Считать id
                     string name = reader.GetString(1); //Считать название
-                    string description = reader.GetString(2); //Считать описание
+                    string description = null;
+                    if (!reader.IsDBNull(2) && reader.GetString(2) != "")
+                     description = reader.GetString(2); //Считать описание, если оно не пустое
                     string promo_conditions = reader.GetString(3); //Считать условия
                     DateOnly start_date = DateOnly.FromDateTime(reader.GetDateTime(4)); //Считать дату начала
                     DateOnly end_date = DateOnly.FromDateTime(reader.GetDateTime(5)); //Считать дату окончания
@@ -70,7 +72,9 @@ namespace internet_shop_ct.Repositories
                 {
                     int id = reader.GetInt32(0); //Считывание id
                     string name = reader.GetString(1); //Считывание названия
-                    string description = reader.GetString(2); //Считывание описания
+                    string description = null;
+                    if (!reader.IsDBNull(2) && reader.GetString(2) != "")
+                        description = reader.GetString(2); //Считать описание, если оно не пустое
                     string promo_conditions = reader.GetString(3); //Считывание условий акции
                     DateOnly start_date = DateOnly.FromDateTime(reader.GetDateTime(4)); //Считать дату начала
                     DateOnly end_date = DateOnly.FromDateTime(reader.GetDateTime(5)); //Считать дату окончания
