@@ -114,6 +114,8 @@
             // 
             // ProductsTable
             // 
+            this.ProductsTable.AllowUserToAddRows = false;
+            this.ProductsTable.AllowUserToDeleteRows = false;
             this.ProductsTable.AllowUserToResizeColumns = false;
             this.ProductsTable.AllowUserToResizeRows = false;
             this.ProductsTable.BackgroundColor = System.Drawing.Color.White;
@@ -134,7 +136,7 @@
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.InactiveCaption;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ProductsTable.DefaultCellStyle = dataGridViewCellStyle3;
@@ -190,7 +192,7 @@
             this.ProductBuy.Name = "ProductBuy";
             this.ProductBuy.ReadOnly = true;
             this.ProductBuy.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ProductBuy.Text = "";
+            this.ProductBuy.Text = "Купить";
             this.ProductBuy.UseColumnTextForButtonValue = true;
             // 
             // CategoriesTab
