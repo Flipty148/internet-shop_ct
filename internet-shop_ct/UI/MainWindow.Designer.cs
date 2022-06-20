@@ -158,6 +158,7 @@
             this.ProductsTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.ProductsTable.Size = new System.Drawing.Size(1228, 618);
             this.ProductsTable.TabIndex = 0;
+            this.ProductsTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductsTable_CellContentClick);
             this.ProductsTable.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.ProductsTable_CellMouseDoubleClick);
             // 
             // ProductCode
@@ -471,6 +472,7 @@
             this.Basket.TabIndex = 2;
             this.Basket.Text = "Корзина";
             this.Basket.UseVisualStyleBackColor = false;
+            this.Basket.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Basket_MouseClick);
             // 
             // tableLayoutPanel1
             // 

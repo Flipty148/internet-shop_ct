@@ -3,7 +3,7 @@
     public class Order
     {
         public enum PaymentMethod { ONLINE, CASH, CARD };
-        public struct ProductInOrder
+        public class ProductInOrder
         {
             public Product Product; //Товар
             public int Count; //Количество в заказе
@@ -64,9 +64,14 @@
             ProductsInOrder = otherOrder.ProductsInOrder;
         }
 
+        public Order()
+        {
+            ProductsInOrder = new List<ProductInOrder>();
+        }
+
         public void appendProductToOrder(ProductInOrder productInOrder)
         {
-            ProductsInOrder.Append(productInOrder);
+            ProductsInOrder.Add(productInOrder);
         }
 
         public void removeProductFromOrder(ProductInOrder productInOrder)

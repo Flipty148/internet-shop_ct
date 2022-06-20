@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ProductsTable = new System.Windows.Forms.DataGridView();
+            this.ProductCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Minus = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,9 +55,14 @@
             // 
             // ProductsTable
             // 
+            this.ProductsTable.AllowUserToAddRows = false;
+            this.ProductsTable.AllowUserToDeleteRows = false;
+            this.ProductsTable.AllowUserToResizeColumns = false;
+            this.ProductsTable.AllowUserToResizeRows = false;
             this.ProductsTable.BackgroundColor = System.Drawing.Color.White;
             this.ProductsTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ProductsTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ProductCode,
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.Minus,
@@ -84,6 +90,15 @@
             this.ProductsTable.TabIndex = 0;
             this.ProductsTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ProductsTable_CellContentClick);
             // 
+            // ProductCode
+            // 
+            this.ProductCode.HeaderText = "Код товара";
+            this.ProductCode.MinimumWidth = 6;
+            this.ProductCode.Name = "ProductCode";
+            this.ProductCode.ReadOnly = true;
+            this.ProductCode.Visible = false;
+            this.ProductCode.Width = 125;
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -107,6 +122,8 @@
             this.Minus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.OrangeRed;
             dataGridViewCellStyle1.NullValue = "-";
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.OrangeRed;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
             this.Minus.DefaultCellStyle = dataGridViewCellStyle1;
             this.Minus.FillWeight = 20F;
             this.Minus.HeaderText = "-";
@@ -130,6 +147,8 @@
             this.Plus.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.LightGreen;
             dataGridViewCellStyle2.NullValue = "+";
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightGreen;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             this.Plus.DefaultCellStyle = dataGridViewCellStyle2;
             this.Plus.FillWeight = 20F;
             this.Plus.HeaderText = "+";
@@ -143,6 +162,8 @@
             this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.Red;
             dataGridViewCellStyle3.NullValue = "X";
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             this.Delete.DefaultCellStyle = dataGridViewCellStyle3;
             this.Delete.FillWeight = 60F;
             this.Delete.HeaderText = "Удалить";
@@ -194,7 +215,9 @@
             // 
             // PickUpPointBox
             // 
-            this.PickUpPointBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.PickUpPointBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.PickUpPointBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PickUpPointBox.DropDownWidth = 450;
             this.PickUpPointBox.FormattingEnabled = true;
             this.PickUpPointBox.Location = new System.Drawing.Point(329, 401);
             this.PickUpPointBox.Name = "PickUpPointBox";
@@ -214,8 +237,13 @@
             // 
             // PaymentMethodBox
             // 
-            this.PaymentMethodBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.PaymentMethodBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.PaymentMethodBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PaymentMethodBox.FormattingEnabled = true;
+            this.PaymentMethodBox.Items.AddRange(new object[] {
+            "Онлайн",
+            "Наличнми",
+            "Картой"});
             this.PaymentMethodBox.Location = new System.Drawing.Point(329, 447);
             this.PaymentMethodBox.Name = "PaymentMethodBox";
             this.PaymentMethodBox.Size = new System.Drawing.Size(320, 36);
@@ -230,11 +258,12 @@
             this.OrderButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OrderButton.Location = new System.Drawing.Point(3, 489);
             this.OrderButton.Name = "OrderButton";
-            this.OrderButton.Padding = new System.Windows.Forms.Padding(5);
+            this.OrderButton.Padding = new System.Windows.Forms.Padding(8);
             this.OrderButton.Size = new System.Drawing.Size(646, 49);
             this.OrderButton.TabIndex = 6;
             this.OrderButton.Text = "Оформить заказ";
             this.OrderButton.UseVisualStyleBackColor = false;
+            this.OrderButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OrderButton_MouseClick);
             // 
             // tableLayoutPanel1
             // 
@@ -272,6 +301,7 @@
             this.Name = "OrderBasketWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Корзина";
+            this.Load += new System.EventHandler(this.OrderBasketWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ProductsTable)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -284,12 +314,6 @@
         private DataGridView ProductsTable;
         private DataGridViewTextBoxColumn ProductName;
         private DataGridViewTextBoxColumn ProductPrice;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn Minus;
-        private DataGridViewTextBoxColumn Count;
-        private DataGridViewTextBoxColumn Plus;
-        private DataGridViewTextBoxColumn Delete;
         private Label TotalPrice;
         private Label PickupPointLabel;
         private ComboBox PickUpPointBox;
@@ -297,5 +321,12 @@
         private ComboBox PaymentMethodBox;
         private Button OrderButton;
         private TableLayoutPanel tableLayoutPanel1;
+        private DataGridViewTextBoxColumn ProductCode;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn Minus;
+        private DataGridViewTextBoxColumn Count;
+        private DataGridViewTextBoxColumn Plus;
+        private DataGridViewTextBoxColumn Delete;
     }
 }

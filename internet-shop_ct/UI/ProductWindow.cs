@@ -8,11 +8,13 @@ namespace internet_shop_ct.internet_shop_ct.UI
     public partial class ProductWindow : Form
     {
         private Product CurProduct;
-        public ProductWindow(int product_code)
+        private MainWindow Main;
+        public ProductWindow(int product_code, MainWindow main)
         {
             InitializeComponent();
             ProductsRepository productsRepository = new ProductsRepository();
             CurProduct = productsRepository.GetByProductCode(product_code);
+            Main = main;
         }
 
         private void ProductWindow_Load(object sender, EventArgs e)
@@ -48,6 +50,11 @@ namespace internet_shop_ct.internet_shop_ct.UI
             {// Для каждой характеристики
                 this.CharacteristicsTable.Rows.Add(characteristic.Name, characteristic.Description, characteristic.Value); //Добавить в таблицу
             }
+        }
+
+        private void Buy_MouseClick(object sender, MouseEventArgs e)
+        {
+            Main.appendProductToBascket(CurProduct.Product_code);
         }
     }
 }

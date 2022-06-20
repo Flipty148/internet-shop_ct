@@ -9,11 +9,18 @@ namespace internet_shop_ct
     public partial class MainWindow : Form
     {
         private User CurUser = null;
+        protected Order possibleOrder = new();
 
         public void setUser(User user)
         {
             CurUser = user;
         }
+
+        public void ClearPossibleOrder()
+        {
+            possibleOrder = new();
+        }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -47,7 +54,7 @@ namespace internet_shop_ct
             int id = Convert.ToInt32(ProductsTable[0, rowIndex].Value);
             if (e.ColumnIndex != buyIndex)
             {//Индекс не равен индексу покупки
-                using ProductWindow productWindow = new ProductWindow(id);
+                using ProductWindow productWindow = new ProductWindow(id,this);
                 productWindow.ShowDialog(); //Отобразить окно товара
             }
         }
@@ -84,7 +91,7 @@ namespace internet_shop_ct
         {
             int rowIndex = e.RowIndex; //Выбранный товар
             int id = Convert.ToInt32(CategoriesProducts[0, rowIndex].Value);
-            using ProductWindow productWindow = new ProductWindow(id);
+            using ProductWindow productWindow = new ProductWindow(id,this);
             productWindow.ShowDialog(); //Отобразить окно товара
         }
 
@@ -117,6 +124,77 @@ namespace internet_shop_ct
             { //Вход выполнен
                 this.Login.Text = CurUser.Name;
             }
+        }
+
+        private void Basket_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (CurUser == null)
+            { //Вход не выполнен
+                string message = "Войдите в аккаунт";
+                string caption = "Внимание";
+                MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            { //Вход выполнен
+                using OrderBasketWindow orderBasketWindow = new OrderBasketWindow(possibleOrder, this);
+                orderBasketWindow.ShowDialog();
+            }
+        }
+
+        private void ProductsTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int productBuyIndex = ProductBuy.Index; //Индекс колонки с кнопкой купить
+            int productCodeIndex = ProductCode.Index; //Индекс колонки кода товара
+            int productCode = (int)ProductsTable[productCodeIndex, e.RowIndex].Value; //Код товара
+            if (e.ColumnIndex == productBuyIndex)
+            { //Нажата кнопка купить
+                appendProductToBascket(productCode);
+                ProductsTable.ClearSelection();
+            }
+        }
+
+        public void appendProductToBascket(int productCode)
+        {
+            if (CurUser == null)
+            {//Вход не выполнен
+                string message = "Войдите в аккаунт чтобы добавить товар в корзину";
+                string caption = "Внимание";
+                MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {//Вход выполнен
+             //Проверить, содержится ли товар в корзине
+                bool isContainsInBasket = false;
+                if (possibleOrder.ProductsInOrder.Count != 0)
+                {
+                    foreach (Order.ProductInOrder productInOrder in possibleOrder.ProductsInOrder)
+                    {
+                        if (productInOrder.Product.Product_code == productCode)
+                        {
+                            isContainsInBasket = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (isContainsInBasket == true)
+                { //Если товар содержиться в корзине
+                    string message = "Товар уже содержиться в корзине";
+                    string caption = "Внимание";
+                    MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                { //Если товар не содержиться в корзине
+                    IProductsRepository<Product> productsRepository = new ProductsRepository();
+                    Order.ProductInOrder productInOrder = new Order.ProductInOrder { Product = productsRepository.GetByProductCode(productCode), Count = 1 };
+                    possibleOrder.appendProductToOrder(productInOrder);
+                }
+            }
+        }
+
+        public int getCurUserCode()
+        {
+            return CurUser.User_code;
         }
     }
 }
