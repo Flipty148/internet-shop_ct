@@ -36,8 +36,8 @@ namespace internet_shop_ct.Repositories
             }
             catch (MySqlException ex)
             {
-                Console.WriteLine($"Ошибка базы данных: {ex.Message}");
-                return newUser;
+                throw new RepositoryException(ex.Number, ex.Message);
+                return null;
             }
         }
 
