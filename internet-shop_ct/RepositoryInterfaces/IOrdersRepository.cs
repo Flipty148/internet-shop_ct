@@ -15,5 +15,7 @@
         T[] GetOrdersByUser(int user_code); //Получить все заказы пользователя
 
         T GetByOrderCode(int order_code); //Получить по коду заказа
+
+        Models.Order.OrderPickUpPoint[] GetAllPickUpPoints();  //Получить все пункты выдачи
     }
 }

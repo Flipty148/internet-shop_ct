@@ -100,6 +100,39 @@ namespace internet_shop_ct.Repositories
             }
         }
 
+        public Order.OrderPickUpPoint[] GetAllPickUpPoints()
+        {
+            try
+            {
+                using var connection = SqlDbConnection.GetDbConnection(); //Соединение
+
+                connection.Open(); //Открытие соединения
+
+                var selectPickUpPointsSql = @"SELECT * FROM `order_pick-up_points`;"; //Sql запрос получения пунктов выдачи
+
+                using var selectPickUpPointsCommand = new MySqlCommand(selectPickUpPointsSql, connection); //Создание команды
+
+                using var reader = selectPickUpPointsCommand.ExecuteReader(); //Выполнение команды
+
+                List<Order.OrderPickUpPoint> pickUpPoints = new List<Order.OrderPickUpPoint>(); //Список пунктов выдачи
+                while (reader.Read())
+                {
+                    int id = reader.GetInt32(0); //ID
+                    string name = reader.GetString(1); //Название
+                    string address = reader.GetString(2); //Адрес
+
+                    pickUpPoints.Add(new Order.OrderPickUpPoint { id = id, name = name, address = address });
+                }
+
+                return pickUpPoints.ToArray();
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine($"Ошибка базы данных: {ex.Message}");
+                return null;
+            }
+        }
+
         public Order GetByOrderCode(int order_code)
         {
             try
