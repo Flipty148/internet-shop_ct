@@ -7,7 +7,7 @@ namespace internet_shop_ct.Repositories
 {
     public class OrdersRepository : IOrdersRepository<Order>
     {
-        public Order Add(Order newOrder, IOrdersRepository<Order>.ProductInOrder[] products, int userCode)
+        public Order Add(Order newOrder, int userCode)
         {
             try
             {
@@ -52,12 +52,12 @@ namespace internet_shop_ct.Repositories
 
                 using var insertProductsCommand = new MySqlCommand(insertProductsSql, connection); //Создание команды добавления товара в заказ
 
-                int countProducts = products.Count(); //Общее количество товаров
+                int countProducts = newOrder.ProductsInOrder.Count(); //Общее количество товаров
                 for (int i = 0; i < countProducts; i++)
                 {
-                    insertProductsCommand.Parameters.AddWithValue("@product_code", products[i].Product.Product_code); //Подстановка кода продукта в команду
+                    insertProductsCommand.Parameters.AddWithValue("@product_code", newOrder.ProductsInOrder[i].Product.Product_code); //Подстановка кода продукта в команду
                     insertProductsCommand.Parameters.AddWithValue("@order_code", returnedOrder.Order_code); //Подстановка кода заказа в команду
-                    insertProductsCommand.Parameters.AddWithValue("@count", products[i].Count); //Подстановка количества товара в команду
+                    insertProductsCommand.Parameters.AddWithValue("@count", newOrder.ProductsInOrder[i].Count); //Подстановка количества товара в команду
 
                     insertProductsCommand.ExecuteNonQuery(); //Выполнение команды добавления товара в заказ
                 }
@@ -209,7 +209,7 @@ namespace internet_shop_ct.Repositories
             }
         }
 
-        public Product[] GetProductsByOrder(Order existingOrder)
+        public Order GetProductsByOrder(Order existingOrder)
         {
             try
             {
@@ -225,23 +225,25 @@ namespace internet_shop_ct.Repositories
 
                 using var reader = selectProductsCommand.ExecuteReader();
 
-                var products = new List<Product>();
-
+                Order newOrder = new Order(existingOrder);
                 while (reader.Read())
                 {
                     int product_code = reader.GetInt32(1);
                     string name = reader.GetString(2);
-                    int price = reader.GetInt32(3);
+                    int price = reader.GetInt32(4);
+                    int count = reader.GetInt32(3);
 
-                    products.Add(new Product(product_code, name, price));
+                    Product curProduct = new Product(product_code, name, price);
+                    Order.ProductInOrder productInOrder = new Order.ProductInOrder{ Product = curProduct, Count = count };
+                    newOrder.appendProductToOrder(productInOrder);
                 }
 
-                return products.ToArray();
+                return newOrder;
             }
             catch (MySqlException ex)
             {
                 Console.WriteLine($"Ошибка базы данных: {ex.Message}");
-                return new Product[] { };
+                return null;
             }
         }
 

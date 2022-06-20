@@ -8,6 +8,8 @@
 
         void Delete(T existingOrder); //Удаление заказа
 
+        T GetProductsByOrder(T existingOrder); //Все товары в заказе
+
         Models.User GetUserByOrder(T existingOrder); //Пользователь по заказу
 
         T[] GetOrdersByUser(int user_code); //Получить все заказы пользователя

@@ -5,7 +5,7 @@
         public enum PaymentMethod { ONLINE, CASH, CARD };
         public struct ProductInOrder
         {
-            public Models.Product Product; //Товар
+            public Product Product; //Товар
             public int Count; //Количество в заказе
         }
 
@@ -53,6 +53,15 @@
             Payment_method = payment_method;
             Order_pick_up_point = order_pick_up_point;
             ProductsInOrder = productInOrders;
+        }
+
+        public Order(Order otherOrder)
+        {
+            Order_code = otherOrder.Order_code;
+            Date_and_time = otherOrder.Date_and_time;
+            Payment_method = otherOrder.Payment_method;
+            Order_pick_up_point = otherOrder.Order_pick_up_point;
+            ProductsInOrder = otherOrder.ProductsInOrder;
         }
 
         public void appendProductToOrder(ProductInOrder productInOrder)
