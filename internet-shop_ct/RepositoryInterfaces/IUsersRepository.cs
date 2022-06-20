@@ -11,6 +11,8 @@
         T Update(T existingUser); //Обновить данные пользователя
 
         void Delete(T existingUser); //Удалить пользователя
+
+        int CountRegistratedDays(T existingUser); //Количество зарегистрированных дней
     }
         
 }

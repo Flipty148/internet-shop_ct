@@ -41,6 +41,36 @@ namespace internet_shop_ct.Repositories
             }
         }
 
+        public int CountRegistratedDays(User existingUser)
+        {
+            try
+            {
+                using var connection = SqlDbConnection.GetDbConnection(); //Соединение
+
+                connection.Open(); //Открытие соединения
+
+                var countDaysSql = "SELECT datediff(curdate(), u.registration_date) FROM users AS u WHERE user_code = @user_code;"; //Sql запрос количества зарегистрированных дней
+
+                using var countDaysCommand = new MySqlCommand(countDaysSql, connection); //Создание команды
+
+                countDaysCommand.Parameters.AddWithValue("@user_code", existingUser.User_code);  //Подстановка кода пользователя в команду
+
+                using var reader = countDaysCommand.ExecuteReader(); //Выполнение команды
+
+                int countDays = 0; //Количество зарегистрированных дней
+                if (reader.Read())
+                {
+                    countDays = reader.GetInt32(0);
+                }
+
+                return countDays;
+            }
+            catch (MySqlException)
+            {
+                return 0;
+            }
+        }
+
         public void Delete(User existingUser)
         {
             try
@@ -79,7 +109,7 @@ namespace internet_shop_ct.Repositories
                 selectCommand.Parameters.AddWithValue("@phone_number", phone_number);
                 selectCommand.Parameters.AddWithValue("@password", password);
 
-                var reader = selectCommand.ExecuteReader();
+                using var reader = selectCommand.ExecuteReader();
 
                 if (reader.Read())
                 {
