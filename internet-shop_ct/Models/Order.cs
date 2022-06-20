@@ -3,6 +3,11 @@
     public class Order
     {
         public enum PaymentMethod { ONLINE, CASH, CARD };
+        public struct ProductInOrder
+        {
+            public Models.Product Product; //Товар
+            public int Count; //Количество в заказе
+        }
 
         public struct OrderPickUpPoint 
         {
@@ -11,6 +16,7 @@
             public string address; //Адрес пункта выдачи
         };
 
+        public List<ProductInOrder> ProductsInOrder { get; private set; }
         public int Order_code { get; private set; } //Код заказа
 
         public DateTime Date_and_time { get; private set; } //Дата и время заказа
@@ -39,6 +45,24 @@
             Date_and_time = DateTime.Now;
             Payment_method = payment_method;
             Order_pick_up_point = order_pick_up_point;
+        }
+
+        public Order(PaymentMethod payment_method, OrderPickUpPoint order_pick_up_point, List<ProductInOrder> productInOrders)
+        {
+            Date_and_time = DateTime.Now;
+            Payment_method = payment_method;
+            Order_pick_up_point = order_pick_up_point;
+            ProductsInOrder = productInOrders;
+        }
+
+        public void appendProductToOrder(ProductInOrder productInOrder)
+        {
+            ProductsInOrder.Append(productInOrder);
+        }
+
+        public void removeProductFromOrder(ProductInOrder productInOrder)
+        {
+            ProductsInOrder.Remove(productInOrder);
         }
     }
 }
