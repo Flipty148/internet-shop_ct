@@ -44,7 +44,7 @@ namespace internet_shop_ct.UI
             Regex regex = new Regex(@"^\+7\d{0,10}$");//Регулярное выражение для телефона
             if (e.KeyCode == Keys.Delete)
             {//Проверка номера телефона при delete
-                if (PhoneNumberText.SelectionStart >= 0 && !regex.IsMatch(this.PhoneNumberText.Text.Remove(PhoneNumberText.SelectionStart, 1)))
+                if (PhoneNumberText.SelectionStart >= 0 && PhoneNumberText.Text.Length != PhoneNumberText.SelectionStart && !regex.IsMatch(this.PhoneNumberText.Text.Remove(PhoneNumberText.SelectionStart, 1)))
                     e.Handled = true;
                 return;
             }
