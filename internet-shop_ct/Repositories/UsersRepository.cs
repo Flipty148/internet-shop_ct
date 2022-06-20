@@ -17,8 +17,8 @@ namespace internet_shop_ct.Repositories
 
                 connection.Open(); //Открытие соединения
 
-                var insertUserSql = @"INSERT INTO users (phone_number, name, password, regisration_date)
-                                  VALUES (@phone_bumber, @name, @password, @registration_date);"; //Sql запрос добавления пользователя
+                var insertUserSql = @"INSERT INTO users (phone_number, name, password, registration_date)
+                                  VALUES (@phone_number, @name, @password, @registration_date);"; //Sql запрос добавления пользователя
 
                 using var insertCommand = new MySqlCommand(insertUserSql, connection); //Создание команды
 
