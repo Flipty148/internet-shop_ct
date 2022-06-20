@@ -90,13 +90,13 @@ namespace internet_shop_ct
 
         private void setPromosTable()
         {
-            IPromosRepository<Promo> promosRepository = new PromosRepository();
+            IPromosRepository<Promo> promosRepository = new PromosRepository(); //Репозиторий акций
 
-            Promo[] promos = promosRepository.GetCurrentPromos();
+            Promo[] promos = promosRepository.GetCurrentPromos(); //Получение текущих акций
 
             foreach (Promo promo in promos)
-            {
-                this.PromoTable.Rows.Add(promo.Id_promos, promo.Name, promo.Start_date, promo.End_date, promo.Promo_percent*100 + "%");
+            { //Для каждой акции
+                this.PromoTable.Rows.Add(promo.Id_promos, promo.Name, promo.Start_date, promo.End_date, promo.Promo_percent*100 + "%"); //Добавить в таблицу
             }
         }
 
@@ -114,7 +114,7 @@ namespace internet_shop_ct
             loginWindow.ShowDialog();
             
             if (CurUser != null)
-            {
+            { //Вход выполнен
                 this.Login.Text = CurUser.Name;
             }
         }

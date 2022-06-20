@@ -10,6 +10,7 @@ namespace internet_shop_ct.UI
     public partial class LoginWindow : Form
     {
         private MainWindow main;
+        private User CurUser = null;
         public LoginWindow(MainWindow mainWindow)
         {
             InitializeComponent();
@@ -84,8 +85,19 @@ namespace internet_shop_ct.UI
 
         private void Register_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            using RegisterWindow registerWindow = new RegisterWindow();
+            using RegisterWindow registerWindow = new RegisterWindow(this);
             registerWindow.ShowDialog();
+
+            if (CurUser != null)
+            {
+                this.Close();
+                main.setUser(CurUser);
+            }
+        }
+
+        public void setUser(User user)
+        {
+            CurUser = user;
         }
     }
 }

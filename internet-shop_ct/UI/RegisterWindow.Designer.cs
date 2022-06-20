@@ -73,6 +73,9 @@
             this.UserNameText.Name = "UserNameText";
             this.UserNameText.Size = new System.Drawing.Size(311, 36);
             this.UserNameText.TabIndex = 2;
+            this.UserNameText.TextChanged += new System.EventHandler(this.UserNameText_TextChanged);
+            this.UserNameText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UserNameText_KeyDown);
+            this.UserNameText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UserNameText_KeyPress);
             // 
             // PhoneNumberLabel
             // 
@@ -92,6 +95,10 @@
             this.PhoneNumberText.Name = "PhoneNumberText";
             this.PhoneNumberText.Size = new System.Drawing.Size(311, 36);
             this.PhoneNumberText.TabIndex = 4;
+            this.PhoneNumberText.Text = "+7";
+            this.PhoneNumberText.Enter += new System.EventHandler(this.PhoneNumberText_Enter);
+            this.PhoneNumberText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PhoneNumberText_KeyDown);
+            this.PhoneNumberText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PhoneNumberText_KeyPress);
             // 
             // PasswordFirstLabel
             // 
@@ -108,15 +115,18 @@
             // 
             this.PasswordFirstText.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PasswordFirstText.Location = new System.Drawing.Point(3, 285);
+            this.PasswordFirstText.MaxLength = 50;
             this.PasswordFirstText.Name = "PasswordFirstText";
             this.PasswordFirstText.PasswordChar = '•';
             this.PasswordFirstText.Size = new System.Drawing.Size(311, 36);
             this.PasswordFirstText.TabIndex = 6;
+            this.PasswordFirstText.TextChanged += new System.EventHandler(this.PasswordFirstText_TextChanged);
             // 
             // PasswordSecond
             // 
             this.PasswordSecond.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PasswordSecond.Location = new System.Drawing.Point(3, 379);
+            this.PasswordSecond.MaxLength = 45;
             this.PasswordSecond.Name = "PasswordSecond";
             this.PasswordSecond.PasswordChar = '•';
             this.PasswordSecond.Size = new System.Drawing.Size(311, 36);
@@ -145,6 +155,7 @@
             this.RegisterButton.TabIndex = 9;
             this.RegisterButton.Text = "Зарегистрироваться";
             this.RegisterButton.UseVisualStyleBackColor = false;
+            this.RegisterButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RegisterButton_MouseClick);
             // 
             // Login
             // 
@@ -159,6 +170,7 @@
             this.Login.TabStop = true;
             this.Login.Text = "Войти?";
             this.Login.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Login.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Login_LinkClicked);
             // 
             // tableLayoutPanel1
             // 
@@ -203,6 +215,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RegisterWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Регистрация";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
