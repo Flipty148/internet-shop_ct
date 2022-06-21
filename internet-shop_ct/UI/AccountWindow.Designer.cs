@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PersonalCabinetLabel = new System.Windows.Forms.Label();
             this.UserName = new System.Windows.Forms.Label();
             this.Tabs = new System.Windows.Forms.TabControl();
@@ -458,10 +459,10 @@
             // FeedbacksTab
             // 
             this.FeedbacksTab.Controls.Add(this.FeedbacksTable);
-            this.FeedbacksTab.Location = new System.Drawing.Point(4, 29);
+            this.FeedbacksTab.Location = new System.Drawing.Point(4, 37);
             this.FeedbacksTab.Name = "FeedbacksTab";
             this.FeedbacksTab.Padding = new System.Windows.Forms.Padding(3);
-            this.FeedbacksTab.Size = new System.Drawing.Size(946, 560);
+            this.FeedbacksTab.Size = new System.Drawing.Size(946, 552);
             this.FeedbacksTab.TabIndex = 2;
             this.FeedbacksTab.Text = "Отзывы";
             this.FeedbacksTab.UseVisualStyleBackColor = true;
@@ -472,6 +473,7 @@
             this.FeedbacksTable.AllowUserToDeleteRows = false;
             this.FeedbacksTable.AllowUserToResizeColumns = false;
             this.FeedbacksTable.AllowUserToResizeRows = false;
+            this.FeedbacksTable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.FeedbacksTable.BackgroundColor = System.Drawing.Color.White;
             this.FeedbacksTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.FeedbacksTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -481,12 +483,13 @@
             this.Comment});
             this.FeedbacksTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FeedbacksTable.Location = new System.Drawing.Point(3, 3);
+            this.FeedbacksTable.MultiSelect = false;
             this.FeedbacksTable.Name = "FeedbacksTable";
             this.FeedbacksTable.ReadOnly = true;
             this.FeedbacksTable.RowHeadersVisible = false;
             this.FeedbacksTable.RowHeadersWidth = 51;
             this.FeedbacksTable.RowTemplate.Height = 29;
-            this.FeedbacksTable.Size = new System.Drawing.Size(940, 554);
+            this.FeedbacksTable.Size = new System.Drawing.Size(940, 546);
             this.FeedbacksTable.TabIndex = 0;
             // 
             // FeedbackDate
@@ -519,6 +522,8 @@
             // Comment
             // 
             this.Comment.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Comment.DefaultCellStyle = dataGridViewCellStyle3;
             this.Comment.HeaderText = "Комментарий";
             this.Comment.MinimumWidth = 6;
             this.Comment.Name = "Comment";
@@ -653,10 +658,6 @@
         private TableLayoutPanel tableLayoutPanel2;
         private DataGridView OrderTable;
         private DataGridView FeedbacksTable;
-        private DataGridViewTextBoxColumn FeedbackDate;
-        private DataGridViewTextBoxColumn Product;
-        private DataGridViewTextBoxColumn Rating;
-        private DataGridViewTextBoxColumn Comment;
         private TableLayoutPanel tableLayoutPanel3;
         private LinkLabel MainPage;
         private Button DeleteAccountButton;
@@ -668,5 +669,9 @@
         private DataGridViewTextBoxColumn Sum;
         private DataGridViewButtonColumn Change;
         private DataGridViewButtonColumn RemoveOrder;
+        private DataGridViewTextBoxColumn FeedbackDate;
+        private DataGridViewTextBoxColumn Product;
+        private DataGridViewTextBoxColumn Rating;
+        private DataGridViewTextBoxColumn Comment;
     }
 }
