@@ -96,7 +96,7 @@ namespace internet_shop_ct.Repositories
             }
             catch(MySqlException ex)
             {
-                Console.WriteLine($"Ошибка базы данных: {ex.Message}");
+                throw new RepositoryException(ex.Message);
             }
         }
 
@@ -141,7 +141,7 @@ namespace internet_shop_ct.Repositories
 
                 connection.Open(); //ОТкрытие соединения
 
-                var selectOrderSql = @"SELECT `time_&_date`, payment_method, `name`, address, o.`id_order_pick-up_point` FROM orders AS o
+                var selectOrderSql = @"SELECT `time_&_date`, payment_method, `name`, address, o.`id_pick-up_point` FROM orders AS o
                                        JOIN `order_pick-up_points` AS opup ON opup.`id_order_pick-up_points` = o.`id_pick-up_point`
                                        WHERE o.order_code = @order_code;"; //Sql запрос получения заказа по его коду
 
@@ -194,7 +194,7 @@ namespace internet_shop_ct.Repositories
 
                 connection.Open(); //Открытие соединения
 
-                var selectOrdersSql = @"SELECT o.order_code,`time_&_date`, payment_method, `name`, address, o.`id_order_pick-up_point` FROM orders AS o
+                var selectOrdersSql = @"SELECT o.order_code,`time_&_date`, payment_method, `name`, address, o.`id_pick-up_point` FROM orders AS o
                                        JOIN `order_pick-up_points` AS opup ON opup.`id_order_pick-up_points` = o.`id_pick-up_point`
                                        WHERE o.user_code = @user_code;"; //Sql запрос получения заказов пользователя
 
@@ -318,6 +318,38 @@ namespace internet_shop_ct.Repositories
             }
         }
 
+        public int TotalOrderCost(int order_code)
+        {
+            try
+            {
+                using var connection = SqlDbConnection.GetDbConnection(); //Соединение
+
+                connection.Open(); //Открыть соединение
+
+                var totalSql = @"select sum(p.price*pto.count) from orders as o
+	                             join products_to_orders as pto on pto.order_code = o.order_code
+	                             join products as p on pto.product_code = p.product_code
+	                             where o.order_code = @order_code;"; //Sql запрос стоимости заказа
+
+                using var totalCommand = new MySqlCommand(totalSql, connection); //Создание команды
+
+                totalCommand.Parameters.AddWithValue("@order_code", order_code); //Подстановка параметров
+
+                using var reader = totalCommand.ExecuteReader(); //Выполнение команды
+                int total = 0;
+                if (reader.Read())
+                {
+                    total = reader.GetInt32(0);
+                }
+                return total;
+            }
+            catch (MySqlException)
+            {
+                return 0;
+            }
+
+        }
+
         public Order Update(Order existingOrder)
         {
             try
@@ -360,7 +392,7 @@ namespace internet_shop_ct.Repositories
             }
             catch(MySqlException ex)
             {
-                Console.WriteLine($"Ошибка базы данных: {ex.Message}");
+                throw new RepositoryException(ex.Message);
                 return null;
             }
         }

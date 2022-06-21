@@ -10,10 +10,16 @@ namespace internet_shop_ct
     {
         private User CurUser = null;
         protected Order possibleOrder = new();
+        private AccountWindow accountWindow = null;
 
         public void setUser(User user)
         {
             CurUser = user;
+        }
+
+        public void clearAccountWindow()
+        {
+            accountWindow = null;
         }
 
         public void ClearPossibleOrder()
@@ -117,12 +123,30 @@ namespace internet_shop_ct
 
         private void Login_MouseDown(object sender, MouseEventArgs e)
         {
-            using LoginWindow loginWindow = new LoginWindow(this);
-            loginWindow.ShowDialog();
-            
-            if (CurUser != null)
+            if (Login.Text == "Войти")
+            { //Вход не выыполнен
+                using LoginWindow loginWindow = new LoginWindow(this);
+                loginWindow.ShowDialog();
+
+                if (CurUser != null)
+                { //Вход выполнен
+                    this.Login.Text = CurUser.Name;
+                }
+            }
+            else
             { //Вход выполнен
-                this.Login.Text = CurUser.Name;
+                //Показать окно учётной записи
+                Hide();
+                if (accountWindow == null)
+                    accountWindow = new AccountWindow(this);
+                accountWindow.ShowDialog();
+                if (CurUser == null)
+                {
+                    Login.Text = "Войти";
+                    possibleOrder = new();
+                }
+                else
+                    Login.Text = CurUser.Name;
             }
         }
 

@@ -219,7 +219,7 @@
             this.PickUpPointBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.PickUpPointBox.DropDownWidth = 450;
             this.PickUpPointBox.FormattingEnabled = true;
-            this.PickUpPointBox.Location = new System.Drawing.Point(329, 401);
+            this.PickUpPointBox.Location = new System.Drawing.Point(329, 393);
             this.PickUpPointBox.Name = "PickUpPointBox";
             this.PickUpPointBox.Size = new System.Drawing.Size(320, 36);
             this.PickUpPointBox.TabIndex = 3;
@@ -244,7 +244,7 @@
             "Онлайн",
             "Наличнми",
             "Картой"});
-            this.PaymentMethodBox.Location = new System.Drawing.Point(329, 447);
+            this.PaymentMethodBox.Location = new System.Drawing.Point(329, 455);
             this.PaymentMethodBox.Name = "PaymentMethodBox";
             this.PaymentMethodBox.Size = new System.Drawing.Size(320, 36);
             this.PaymentMethodBox.TabIndex = 5;

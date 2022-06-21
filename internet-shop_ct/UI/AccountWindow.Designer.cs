@@ -52,7 +52,7 @@
             this.DeleteAccountButton = new System.Windows.Forms.Button();
             this.OrdersTab = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.OrderTable = new System.Windows.Forms.DataGridView();
             this.OrderNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PickUpPoint = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -60,9 +60,8 @@
             this.Sum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Change = new System.Windows.Forms.DataGridViewButtonColumn();
             this.RemoveOrder = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.SaveChangeOrder = new System.Windows.Forms.Button();
             this.FeedbacksTab = new System.Windows.Forms.TabPage();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.FeedbacksTable = new System.Windows.Forms.DataGridView();
             this.FeedbackDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Product = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rating = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,14 +70,15 @@
             this.CountDays = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.MainPage = new System.Windows.Forms.LinkLabel();
+            this.ExitAccountButton = new System.Windows.Forms.Button();
             this.Tabs.SuspendLayout();
             this.PersonalDataTab.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.OrdersTab.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OrderTable)).BeginInit();
             this.FeedbacksTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FeedbacksTable)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -203,6 +203,9 @@
             this.UserNameText.ReadOnly = true;
             this.UserNameText.Size = new System.Drawing.Size(307, 36);
             this.UserNameText.TabIndex = 3;
+            this.UserNameText.TextChanged += new System.EventHandler(this.UserNameText_TextChanged);
+            this.UserNameText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UserNameText_KeyDown);
+            this.UserNameText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.UserNameText_KeyPress);
             // 
             // UserNameButton
             // 
@@ -214,6 +217,7 @@
             this.UserNameButton.TabIndex = 4;
             this.UserNameButton.Text = "Изменить ...";
             this.UserNameButton.UseVisualStyleBackColor = true;
+            this.UserNameButton.Click += new System.EventHandler(this.UserNameButton_Click);
             // 
             // PhoneNumberLabel
             // 
@@ -233,6 +237,8 @@
             this.PhoneNumberText.ReadOnly = true;
             this.PhoneNumberText.Size = new System.Drawing.Size(307, 36);
             this.PhoneNumberText.TabIndex = 6;
+            this.PhoneNumberText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PhoneNumberText_KeyDown);
+            this.PhoneNumberText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PhoneNumberText_KeyPress);
             // 
             // PhoneNumberButton
             // 
@@ -244,6 +250,7 @@
             this.PhoneNumberButton.TabIndex = 7;
             this.PhoneNumberButton.Text = "Изменить ...";
             this.PhoneNumberButton.UseVisualStyleBackColor = true;
+            this.PhoneNumberButton.Click += new System.EventHandler(this.PhoneNumberButton_Click);
             // 
             // PasswordConfirmButton
             // 
@@ -255,6 +262,7 @@
             this.PasswordConfirmButton.TabIndex = 8;
             this.PasswordConfirmButton.Text = "Изменить ...";
             this.PasswordConfirmButton.UseVisualStyleBackColor = true;
+            this.PasswordConfirmButton.Click += new System.EventHandler(this.PasswordConfirmButton_Click);
             // 
             // PasswordLabel
             // 
@@ -274,6 +282,7 @@
             this.PasswordText.ReadOnly = true;
             this.PasswordText.Size = new System.Drawing.Size(307, 36);
             this.PasswordText.TabIndex = 10;
+            this.PasswordText.TextChanged += new System.EventHandler(this.PasswordText_TextChanged);
             // 
             // PasswordConfirmLabel
             // 
@@ -305,6 +314,7 @@
             this.SaveChangeButton.TabIndex = 13;
             this.SaveChangeButton.Text = "Сохранить изменения";
             this.SaveChangeButton.UseVisualStyleBackColor = true;
+            this.SaveChangeButton.Click += new System.EventHandler(this.SaveChangeButton_Click);
             // 
             // DeleteAccountButton
             // 
@@ -318,6 +328,7 @@
             this.DeleteAccountButton.TabIndex = 14;
             this.DeleteAccountButton.Text = "Удалить учётную запись";
             this.DeleteAccountButton.UseVisualStyleBackColor = false;
+            this.DeleteAccountButton.Click += new System.EventHandler(this.DeleteAccountButton_Click);
             // 
             // OrdersTab
             // 
@@ -334,8 +345,7 @@
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.dataGridView1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.SaveChangeOrder, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.OrderTable, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -345,15 +355,15 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(940, 554);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // dataGridView1
+            // OrderTable
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.OrderTable.AllowUserToAddRows = false;
+            this.OrderTable.AllowUserToDeleteRows = false;
+            this.OrderTable.AllowUserToResizeColumns = false;
+            this.OrderTable.AllowUserToResizeRows = false;
+            this.OrderTable.BackgroundColor = System.Drawing.Color.White;
+            this.OrderTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.OrderTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OrderNumber,
             this.OrderDate,
             this.PickUpPoint,
@@ -361,15 +371,16 @@
             this.Sum,
             this.Change,
             this.RemoveOrder});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(934, 492);
-            this.dataGridView1.TabIndex = 0;
+            this.OrderTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OrderTable.Location = new System.Drawing.Point(3, 3);
+            this.OrderTable.MultiSelect = false;
+            this.OrderTable.Name = "OrderTable";
+            this.OrderTable.RowHeadersVisible = false;
+            this.OrderTable.RowHeadersWidth = 51;
+            this.OrderTable.RowTemplate.Height = 29;
+            this.OrderTable.Size = new System.Drawing.Size(934, 492);
+            this.OrderTable.TabIndex = 0;
+            this.OrderTable.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OrderTable_CellContentClick);
             // 
             // OrderNumber
             // 
@@ -392,6 +403,7 @@
             // PickUpPoint
             // 
             this.PickUpPoint.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.PickUpPoint.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
             this.PickUpPoint.HeaderText = "Пункт выдачи";
             this.PickUpPoint.MinimumWidth = 6;
             this.PickUpPoint.Name = "PickUpPoint";
@@ -405,7 +417,6 @@
             this.PaymentMethod.HeaderText = "Способ оплаты";
             this.PaymentMethod.MinimumWidth = 6;
             this.PaymentMethod.Name = "PaymentMethod";
-            this.PaymentMethod.ReadOnly = true;
             this.PaymentMethod.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // Sum
@@ -420,7 +431,7 @@
             // Change
             // 
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.NullValue = "Изменить ...";
+            dataGridViewCellStyle1.NullValue = "Изменить";
             this.Change.DefaultCellStyle = dataGridViewCellStyle1;
             this.Change.HeaderText = "Изменить пункт выдачи";
             this.Change.MinimumWidth = 6;
@@ -444,20 +455,9 @@
             this.RemoveOrder.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.RemoveOrder.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // SaveChangeOrder
-            // 
-            this.SaveChangeOrder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SaveChangeOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SaveChangeOrder.Location = new System.Drawing.Point(3, 501);
-            this.SaveChangeOrder.Name = "SaveChangeOrder";
-            this.SaveChangeOrder.Size = new System.Drawing.Size(934, 50);
-            this.SaveChangeOrder.TabIndex = 1;
-            this.SaveChangeOrder.Text = "Сохранить изменения";
-            this.SaveChangeOrder.UseVisualStyleBackColor = true;
-            // 
             // FeedbacksTab
             // 
-            this.FeedbacksTab.Controls.Add(this.dataGridView2);
+            this.FeedbacksTab.Controls.Add(this.FeedbacksTable);
             this.FeedbacksTab.Location = new System.Drawing.Point(4, 29);
             this.FeedbacksTab.Name = "FeedbacksTab";
             this.FeedbacksTab.Padding = new System.Windows.Forms.Padding(3);
@@ -466,28 +466,28 @@
             this.FeedbacksTab.Text = "Отзывы";
             this.FeedbacksTab.UseVisualStyleBackColor = true;
             // 
-            // dataGridView2
+            // FeedbacksTable
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AllowUserToResizeColumns = false;
-            this.dataGridView2.AllowUserToResizeRows = false;
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.FeedbacksTable.AllowUserToAddRows = false;
+            this.FeedbacksTable.AllowUserToDeleteRows = false;
+            this.FeedbacksTable.AllowUserToResizeColumns = false;
+            this.FeedbacksTable.AllowUserToResizeRows = false;
+            this.FeedbacksTable.BackgroundColor = System.Drawing.Color.White;
+            this.FeedbacksTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.FeedbacksTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FeedbackDate,
             this.Product,
             this.Rating,
             this.Comment});
-            this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView2.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 29;
-            this.dataGridView2.Size = new System.Drawing.Size(940, 554);
-            this.dataGridView2.TabIndex = 0;
+            this.FeedbacksTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FeedbacksTable.Location = new System.Drawing.Point(3, 3);
+            this.FeedbacksTable.Name = "FeedbacksTable";
+            this.FeedbacksTable.ReadOnly = true;
+            this.FeedbacksTable.RowHeadersVisible = false;
+            this.FeedbacksTable.RowHeadersWidth = 51;
+            this.FeedbacksTable.RowTemplate.Height = 29;
+            this.FeedbacksTable.Size = new System.Drawing.Size(940, 554);
+            this.FeedbacksTable.TabIndex = 0;
             // 
             // FeedbackDate
             // 
@@ -557,6 +557,7 @@
             this.tableLayoutPanel3.Controls.Add(this.PersonalCabinetLabel, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.CountRegistratedDaysLabel, 2, 1);
             this.tableLayoutPanel3.Controls.Add(this.MainPage, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.ExitAccountButton, 2, 3);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -567,7 +568,6 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1200, 630);
             this.tableLayoutPanel3.TabIndex = 5;
-            this.tableLayoutPanel3.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel3_Paint);
             // 
             // MainPage
             // 
@@ -582,6 +582,22 @@
             this.MainPage.TabStop = true;
             this.MainPage.Text = "Главная";
             this.MainPage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.MainPage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.MainPage_LinkClicked);
+            // 
+            // ExitAccountButton
+            // 
+            this.ExitAccountButton.BackColor = System.Drawing.Color.Turquoise;
+            this.ExitAccountButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ExitAccountButton.FlatAppearance.BorderSize = 0;
+            this.ExitAccountButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkTurquoise;
+            this.ExitAccountButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExitAccountButton.Location = new System.Drawing.Point(963, 582);
+            this.ExitAccountButton.Name = "ExitAccountButton";
+            this.ExitAccountButton.Size = new System.Drawing.Size(234, 45);
+            this.ExitAccountButton.TabIndex = 6;
+            this.ExitAccountButton.Text = "Выйти из аккаунта";
+            this.ExitAccountButton.UseVisualStyleBackColor = false;
+            this.ExitAccountButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ExitAccountButton_MouseClick);
             // 
             // AccountWindow
             // 
@@ -600,9 +616,9 @@
             this.tableLayoutPanel1.PerformLayout();
             this.OrdersTab.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OrderTable)).EndInit();
             this.FeedbacksTab.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FeedbacksTable)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
@@ -635,9 +651,8 @@
         private TextBox PasswordConfirmText;
         private Button SaveChangeButton;
         private TableLayoutPanel tableLayoutPanel2;
-        private DataGridView dataGridView1;
-        private Button SaveChangeOrder;
-        private DataGridView dataGridView2;
+        private DataGridView OrderTable;
+        private DataGridView FeedbacksTable;
         private DataGridViewTextBoxColumn FeedbackDate;
         private DataGridViewTextBoxColumn Product;
         private DataGridViewTextBoxColumn Rating;
@@ -645,6 +660,7 @@
         private TableLayoutPanel tableLayoutPanel3;
         private LinkLabel MainPage;
         private Button DeleteAccountButton;
+        private Button ExitAccountButton;
         private DataGridViewTextBoxColumn OrderNumber;
         private DataGridViewTextBoxColumn OrderDate;
         private DataGridViewComboBoxColumn PickUpPoint;

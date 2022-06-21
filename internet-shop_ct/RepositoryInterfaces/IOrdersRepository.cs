@@ -17,5 +17,7 @@
         T GetByOrderCode(int order_code); //Получить по коду заказа
 
         Models.Order.OrderPickUpPoint[] GetAllPickUpPoints();  //Получить все пункты выдачи
+
+        int TotalOrderCost(int order_code); //Стоимотсь заказа
     }
 }

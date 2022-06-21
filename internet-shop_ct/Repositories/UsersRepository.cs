@@ -79,6 +79,22 @@ namespace internet_shop_ct.Repositories
 
                 connection.Open(); //Открытие соединения
 
+                var deleteUserFeedbacksSql = "DELETE FROM feedbacks WHERE user_code = @user_code;";
+
+                using var deleteUserFeedbacksCommand = new MySqlCommand(deleteUserFeedbacksSql, connection);
+
+                deleteUserFeedbacksCommand.Parameters.AddWithValue("@user_code", existingUser.User_code);
+
+                deleteUserFeedbacksCommand.ExecuteNonQuery();
+
+                IOrdersRepository<Order> ordersRepository = new OrdersRepository();
+                Order[] orders = ordersRepository.GetOrdersByUser(existingUser.User_code);
+
+                foreach (Order order in orders)
+                {
+                    ordersRepository.Delete(order);
+                }
+
                 var deleteUserSql = "DELETE FROM users WHERE user_code = @user_code;"; //Sqql запрос удаления пользователя
 
                 using var deleteCommand = new MySqlCommand(deleteUserSql, connection); //Создание команды
@@ -89,7 +105,7 @@ namespace internet_shop_ct.Repositories
             }
             catch (MySqlException ex)
             {
-                Console.WriteLine($"Ошибка базы данных: {ex.Message}");
+                throw new RepositoryException(ex.Message);
             }
         }
 
@@ -194,7 +210,7 @@ namespace internet_shop_ct.Repositories
             }
             catch (MySqlException ex)
             {
-                Console.WriteLine($"Ошибка базы данных: {ex.Message}");
+                throw new RepositoryException(ex.Number,ex.Message);
                 return existingUser;
             }
         }
