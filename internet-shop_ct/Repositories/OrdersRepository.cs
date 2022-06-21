@@ -53,13 +53,16 @@ namespace internet_shop_ct.Repositories
                 using var insertProductsCommand = new MySqlCommand(insertProductsSql, connection); //Создание команды добавления товара в заказ
 
                 int countProducts = newOrder.ProductsInOrder.Count(); //Общее количество товаров
-                for (int i = 0; i < countProducts; i++)
-                {
-                    insertProductsCommand.Parameters.AddWithValue("@product_code", newOrder.ProductsInOrder[i].Product.Product_code); //Подстановка кода продукта в команду
-                    insertProductsCommand.Parameters.AddWithValue("@order_code", returnedOrder.Order_code); //Подстановка кода заказа в команду
-                    insertProductsCommand.Parameters.AddWithValue("@count", newOrder.ProductsInOrder[i].Count); //Подстановка количества товара в команду
 
-                    insertProductsCommand.ExecuteNonQuery(); //Выполнение команды добавления товара в заказ
+                insertProductsCommand.Parameters.AddWithValue("@product_code", newOrder.ProductsInOrder[0].Product.Product_code); //Подстановка кода продукта в команду
+                insertProductsCommand.Parameters.AddWithValue("@order_code", returnedOrder.Order_code); //Подстановка кода заказа в команду
+                insertProductsCommand.Parameters.AddWithValue("@count", newOrder.ProductsInOrder[0].Count); //Подстановка количества товара в команду
+                for (int i = 1; i < countProducts; i++)
+                {
+                    insertProductsCommand.Parameters["@product_code"].Value = newOrder.ProductsInOrder[i].Product.Product_code;
+                    insertProductsCommand.Parameters["@count"].Value = newOrder.ProductsInOrder[i].Count; //Подстановка количества товара в команду
+
+                insertProductsCommand.ExecuteNonQuery(); //Выполнение команды добавления товара в заказ
                 }
                 return returnedOrder;
             }

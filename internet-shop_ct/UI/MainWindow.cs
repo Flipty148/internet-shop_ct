@@ -140,7 +140,6 @@ namespace internet_shop_ct
                 if (accountWindow == null)
                     accountWindow = new AccountWindow(this);
                 accountWindow.ShowDialog();
-                accountWindow = null;
                 if (CurUser == null)
                 {
                     Login.Text = "Войти";

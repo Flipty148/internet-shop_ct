@@ -196,7 +196,7 @@ namespace internet_shop_ct.UI
 
         private void MainPage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Close(); //Скрыть текущее окно
+            Hide(); //Скрыть текущее окно
             Main.Show(); //Показать главное
         }
 

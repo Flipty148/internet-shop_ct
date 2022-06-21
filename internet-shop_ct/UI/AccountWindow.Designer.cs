@@ -459,10 +459,10 @@
             // FeedbacksTab
             // 
             this.FeedbacksTab.Controls.Add(this.FeedbacksTable);
-            this.FeedbacksTab.Location = new System.Drawing.Point(4, 29);
+            this.FeedbacksTab.Location = new System.Drawing.Point(4, 37);
             this.FeedbacksTab.Name = "FeedbacksTab";
             this.FeedbacksTab.Padding = new System.Windows.Forms.Padding(3);
-            this.FeedbacksTab.Size = new System.Drawing.Size(946, 560);
+            this.FeedbacksTab.Size = new System.Drawing.Size(946, 552);
             this.FeedbacksTab.TabIndex = 2;
             this.FeedbacksTab.Text = "Отзывы";
             this.FeedbacksTab.UseVisualStyleBackColor = true;
@@ -489,7 +489,7 @@
             this.FeedbacksTable.RowHeadersVisible = false;
             this.FeedbacksTable.RowHeadersWidth = 51;
             this.FeedbacksTable.RowTemplate.Height = 29;
-            this.FeedbacksTable.Size = new System.Drawing.Size(940, 554);
+            this.FeedbacksTable.Size = new System.Drawing.Size(940, 546);
             this.FeedbacksTable.TabIndex = 0;
             // 
             // FeedbackDate
